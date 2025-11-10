@@ -6,39 +6,55 @@ order: 1
 permalink: /Aboutme/
 ---
 
-## Introduction
+
+<!-- 第一部分：名字 + 联系方式 + 照片 -->
 <section>
-  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;">
-    
-    <div style="flex: 1 1 60%; font-size: 1rem; line-height: 1.7;">
-      <p>
-        I am <strong>Letian Liang</strong>, an undergraduate student majoring in
-        <strong>Data Science and Big Data Technology</strong> at
-        <strong>South China University of Technology (SCUT)</strong>.
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;">
+
+    <!-- 左侧：名字 + 联系方式 -->
+    <div style="flex: 1 1 60%; font-size: 1rem; line-height: 1.8;">
+      <h2 style="margin: 0; font-size: 1.8rem;">Letian Liang</h2>
+      <p style="margin: 0.3rem 0; color: var(--text-muted-color); font-size: 1rem;">
+        Undergraduate, Data Science and Big Data Technology<br>
+        <a href="https://www.scut.edu.cn/en/" target="_blank"><strong>South China University of Technology (SCUT)</strong></a>
       </p>
-       <p>
-        My academic interests broadly span the field of <strong>Artificial Intelligence</strong>,
-        with a particular focus on <strong>Large Language Models (LLMs)</strong>, especially in <strong>fine-tuning and the integration of multimodal signals</strong> to enhance the generalization and interpretability of AI systems.
-      </p>
-      <p>
-        I am deeply engaged in studying <strong>data-driven optimization</strong> methods,
-        especially those applied to <strong>real-world decision-making problems</strong> such as dynamic scheduling and resource allocation.
-        My goal is to explore how data-centric intelligence and optimization theory can be jointly applied to design efficient, adaptive, and reliable systems.
-      </p>
+      <p style="margin: 0.8rem 0 0 0; line-height: 2; font-size: 1rem;">
+        <i class="fas fa-envelope"></i>
+        Email Address: 
+        <a href="mailto:ftv1nc3ntl1ang@mail.scut.edu.cn" target="_blank">ftv1nc3ntl1ang@mail.scut.edu.cn</a><br>
+
+        <i class="fab fa-github"></i>
+        Github:
+        <a href="https://github.com/V1nc3ntL1ang" target="_blank">https://github.com/V1nc3ntL1ang</a><br>
+<!-- 
+        <i class="fas fa-globe"></i>
+        <a href="https://V1nc3ntL1ang.github.io" target="_blank">V1nc3ntL1ang.github.io</a><br> -->
+</p>
+
     </div>
 
+    <!-- 右侧：头像 -->
     <div style="flex: 0 0 240px; display: flex; justify-content: center; align-items: center;">
-    <img src="/assets/img/avatars/avatar.png" alt="Letian Liang Portrait"
-       style="width: 100%; aspect-ratio: 2 / 3; object-fit: cover;
-              border-radius: 12px; border: 2px solid var(--border-color);
-              background-color: var(--card-bg);
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);">
+      <img src="/assets/img/avatars/avatar.png" alt="Letian Liang Portrait"
+           style="width: 100%; aspect-ratio: 2 / 3; object-fit: cover;
+                  border-radius: 12px; border: 2px solid var(--border-color);
+                  background-color: var(--card-bg);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);">
     </div>
-
 
   </div>
 </section>
 
+---
+
+## Introduction
+I am an undergraduate student majoring in Data Science and Big Data Technology at South China University of Technology (SCUT).
+
+My academic interests broadly span the field of Artificial Intelligence, with a particular focus on Large Language Models (LLMs), especially in fine-tuning and the integration of multimodal signals to enhance the generalization and interpretability of AI systems.
+
+I am deeply engaged in studying data-driven optimization methods, especially those applied to real-world decision-making problems such as dynamic scheduling and resource allocation. My goal is to explore how data-centric intelligence and optimization theory can be jointly applied to design efficient, adaptive, and reliable systems.
+
+---
 
 ## Education
 <style>
@@ -97,7 +113,7 @@ permalink: /Aboutme/
 
 <div class="edu-item">
   <div class="edu-logo">
-    <img src="assets/img/schools/sms.png" alt="School Logo">
+    <img src="assets/img/schools/sms.webp" alt="School Logo">
   </div>
   <div class="edu-content">
     <div class="edu-school">Shenzhen Middle School</div>
@@ -111,7 +127,7 @@ permalink: /Aboutme/
 
 <div class="edu-item">
   <div class="edu-logo">
-    <img src="/assets/img/schools/scut.png" alt="School Logo">
+    <img src="/assets/img/schools/scut.webp" alt="School Logo">
   </div>
   <div class="edu-content">
     <div class="edu-school">South China University of Technology</div>
@@ -125,7 +141,7 @@ permalink: /Aboutme/
 
 <div class="edu-item">
   <div class="edu-logo">
-    <img src="/assets/img/schools/berkeley.png" alt="School Logo">
+    <img src="/assets/img/schools/berkeley.webp" alt="School Logo">
   </div>
   <div class="edu-content">
     <div class="edu-school">University of California, Berkeley</div>

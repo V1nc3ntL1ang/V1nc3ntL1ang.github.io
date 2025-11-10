@@ -58,7 +58,7 @@ webmaster_verifications:
 
 # Web Analytics Settings
 analytics:
-  google_analytics:
+  google:
     id: G-J6KD946E54
 
   goatcounter:

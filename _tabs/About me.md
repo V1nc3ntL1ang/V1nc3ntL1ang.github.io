@@ -16,6 +16,7 @@ permalink: /Aboutme/
       <h2 style="margin: 0; font-size: 1.8rem;">Letian Liang</h2>
       <p style="margin: 0.3rem 0; color: var(--text-muted-color); font-size: 1rem;">
         Undergraduate, Data Science and Big Data Technology<br>
+        <a href="https://www2.scut.edu.cn/ft_en/" target="_blank"><strong>School of Future Technology</strong></a><br>
         <a href="https://www.scut.edu.cn/en/" target="_blank"><strong>South China University of Technology (SCUT)</strong></a>
       </p>
       <p style="margin: 0.8rem 0 0 0; line-height: 2; font-size: 1rem;">
@@ -50,9 +51,10 @@ permalink: /Aboutme/
 ## Introduction
 I am an undergraduate student majoring in Data Science and Big Data Technology at South China University of Technology (SCUT).
 
-My academic interests broadly span the field of Artificial Intelligence, with a particular focus on Large Language Models (LLMs), especially in fine-tuning and the integration of multimodal signals to enhance the generalization and interpretability of AI systems.
+My academic interests broadly span the field of Artificial Intelligence, with a particular emphasis on **Multimodal Large Language Models** (MLLMs). I am especially interested in advancing their generalization and inference capabilities under complex multimodal inputs.
 
-I am deeply engaged in studying data-driven optimization methods, especially those applied to real-world decision-making problems such as dynamic scheduling and resource allocation. My goal is to explore how data-centric intelligence and optimization theory can be jointly applied to design efficient, adaptive, and reliable systems.
+I am also deeply engaged in utilizing **Reinforcement Learning** (RL) algorithms for real-world decision-making problems, including dynamic scheduling and resource allocation in complex systems.
+
 
 ---
 
@@ -120,7 +122,7 @@ I am deeply engaged in studying data-driven optimization methods, especially tho
     <div class="edu-degree">High School</div>
     <div class="edu-date">2020 – 2023</div>
     <div class="edu-desc">
-      Met a bunch of brilliant people and had a gorgeous time there.
+      Met a bunch of brilliant people and had a gorgeous time there!
     </div>
   </div>
 </div>
@@ -134,7 +136,7 @@ I am deeply engaged in studying data-driven optimization methods, especially tho
     <div class="edu-degree">Majored in Data Science and Big Data Technology</div>
     <div class="edu-date">2023 – Present</div>
     <div class="edu-desc">
-      Expecting to receive a B.Eng. in 2027
+      It is a great privilege to work under the supervision of <a href="https://xw-hu.github.io/" target="_blank">Prof. Xiaowei Hu</a>.
     </div>
   </div>
 </div>

@@ -58,6 +58,7 @@ My research interests focus on developing adaptive learning frameworks that inte
 - (2) leveraging reinforcement learning to drive self-evolving reasoning and understanding in agentic multimodal models, enabling adaptive inference behaviors and robust generalization under distributional shifts;
 
 - (3) applying RL-driven methods to real-world decision-making scenarios, such as dynamic scheduling and resource allocation in complex, partially observable systems.
+
 ---
 
 ## Education

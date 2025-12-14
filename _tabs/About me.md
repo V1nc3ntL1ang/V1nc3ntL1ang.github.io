@@ -51,11 +51,13 @@ permalink: /Aboutme/
 ## Introduction
 I am an undergraduate student majoring in Data Science and Big Data Technology at South China University of Technology (SCUT).
 
-My academic interests broadly span the field of Artificial Intelligence, with a particular emphasis on **Multimodal Large Language Models** (MLLMs). I am especially interested in advancing their generalization and inference capabilities under complex multimodal inputs.
+My research interests focus on developing adaptive learning frameworks that integrate **reinforcement learning** with **agentic multimodal models**, enabling robust reasoning, understanding, and decision-making in complex environments, with a focus on:
 
-I am also deeply engaged in utilizing **Reinforcement Learning** (RL) algorithms for real-world decision-making problems, including dynamic scheduling and resource allocation in complex systems.
+- (1) designing agent-based multimodal reasoning frameworks that support structured perception, planning, and problem solving over complex vision–audio–language inputs;
 
+- (2) leveraging reinforcement learning to drive self-evolving reasoning and understanding in agentic multimodal models, enabling adaptive inference behaviors and robust generalization under distributional shifts;
 
+- (3) applying RL-driven methods to real-world decision-making scenarios, such as dynamic scheduling and resource allocation in complex, partially observable systems.
 ---
 
 ## Education

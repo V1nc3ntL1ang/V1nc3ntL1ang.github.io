@@ -1,0 +1,13 @@
+---
+layout: page
+title: "About Me"
+permalink: /
+---
+
+{% assign about_tab = site.tabs | where: "title", "About Me" | first %} {% if
+about_tab %} {{ about_tab.content | markdownify }} {% else %}
+<p>
+  About Me content is missing. Please add it under
+  <code>_tabs/About me.md</code>.
+</p>
+{% endif %}

@@ -1,0 +1,26 @@
+---
+layout: compress
+swcache: true
+---
+
+[
+  {% assign first = true %}
+  {% for tab in site.tabs %}
+  {% assign filename = tab.path | split: '/' | last %}
+  {% assign first_char = filename | slice: 0 %}
+  {% if first_char != '_' %}
+  {% unless first %}
+  ,
+  {% endunless %}
+  {% assign first = false %}
+  {
+    "title": {{ tab.title | jsonify }},
+    "url": {{ tab.url | relative_url | jsonify }},
+    "categories": "",
+    "tags": "",
+    "date": {{ tab.date | jsonify }},
+    "content": {{ tab.content | markdownify | strip_html | strip_newlines | jsonify }}
+  }
+  {% endif %}
+  {% endfor %}
+]

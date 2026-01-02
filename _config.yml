@@ -3,16 +3,16 @@
 # Import the theme
 theme: jekyll-theme-chirpy
 
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
+# The language of the webpage 鈥?http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
 lang: en
 
-# Change to your timezone › https://zones.arilyn.cc
+# Change to your timezone 鈥?https://zones.arilyn.cc
 timezone: Asia/Shanghai
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
+# jekyll-seo-tag settings 鈥?https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# 鈫?--------------------------
 
 title: Letian Liang # the main title
 
@@ -53,7 +53,7 @@ webmaster_verifications:
   baidu: # fill in your Baidu verification code
   facebook: # fill in your Facebook verification code
 
-# ↑ --------------------------
+# 鈫?--------------------------
 # The end of `jekyll-seo-tag` settings
 
 # Web Analytics Settings
@@ -85,8 +85,8 @@ analytics:
 #
 # Available options:
 #
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
+#     light 鈥?Use the light color scheme
+#     dark 鈥?Use the dark color scheme
 #
 theme_mode: # [light | dark]
 
@@ -105,19 +105,19 @@ avatar: "/assets/img/favicons/apple-touch-icon.png"
 social_preview_image: # string, local or CORS resources
 
 # boolean type, the global switch for TOC in posts.
-# toc: false
+toc: true
 
 # comments:
 #   # Global switch for the post-comment system. Keeping it empty means disabled.
 #   provider: # [disqus | utterances | giscus]
 #   # The provider options are as follows:
 #   disqus:
-#     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-#   # utterances settings › https://utteranc.es/
+#     shortname: # fill with the Disqus shortname. 鈥?https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+#   # utterances settings 鈥?https://utteranc.es/
 #   utterances:
 #     repo: # <gh-username>/<repo>
 #     issue_term: # < url | pathname | title | ...>
-#   # Giscus options › https://giscus.app
+#   # Giscus options 鈥?https://giscus.app
 #   giscus:
 #     repo: # <gh-username>/<repo>
 #     repo_id:
@@ -129,7 +129,7 @@ social_preview_image: # string, local or CORS resources
 #     lang: # optional, default to the value of `site.lang`
 #     reactions_enabled: # optional, default to the value of `1`
 
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
+# Self-hosted static assets, optional 鈥?https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:
     enabled: # boolean, keep empty means false
@@ -157,7 +157,7 @@ baseurl: ""
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+  syntax_highlighter_opts: # Rouge Options 鈥?https://github.com/jneen/rouge#full-options
     css_class: highlight
     # default_lang: console
     span:
@@ -172,6 +172,10 @@ collections:
     sort_by: order
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      toc: true
   #   - scope:
   #       path: "" # An empty string here means all files in the project
   #       type: posts

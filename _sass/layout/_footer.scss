@@ -5,7 +5,8 @@
 
 footer {
   background-color: var(--main-bg);
-  height: v.$footer-height;
+  min-height: v.$footer-height;
+  height: auto;
   border-top: 1px solid var(--main-border-color);
 
   @extend %text-xs;
@@ -13,7 +14,8 @@ footer {
   @include bp.lt(bp.get(lg)) {
     @include mx.slide;
 
-    height: v.$footer-height-large;
+    min-height: v.$footer-height-large;
+    height: auto;
     padding: 1.5rem 0;
   }
 
@@ -30,7 +32,37 @@ footer {
   }
 
   p {
-    text-align: center;
+    text-align: left;
     margin-bottom: 0;
   }
+  .clustrmaps-widget {
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem 0 0 auto;
+    text-align: right;
+    overflow: hidden;
+  }
+
+  .clustrmaps-widget iframe,
+  .clustrmaps-widget img,
+  .clustrmaps-widget canvas,
+  .clustrmaps-widget svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 0 0 auto;
+  }
+
+  @media (max-width: 576px) {
+    .clustrmaps-widget {
+      max-width: 90vw;
+    }
+  }
 }
+
+
+
+
+
+
+

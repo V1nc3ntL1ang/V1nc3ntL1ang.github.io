@@ -34,7 +34,7 @@ permalink: /Aboutme/
       </h2>
 
       <p style="margin: 0.3rem 0 0 0; font-size: 0.95rem; color: var(--text-muted-color);">
-        Call me <strong>Vincent</strong> :)
+        You can also call me <strong>Vincent</strong> : )
       </p>
 
       <p style="margin: 0.5rem 0 0 0; color: var(--text-muted-color); font-size: 1rem;">
@@ -161,7 +161,7 @@ My research interests focus on developing **self-evolving** frameworks that inte
     <div class="edu-degree">High School</div>
     <div class="edu-date">2020 – 2023</div>
     <div class="edu-desc">
-      Met a bunch of brilliant people and had a gorgeous time there!
+      Met a bunch of brilliant people and had a gorgeous time here!
     </div>
   </div>
 </div>

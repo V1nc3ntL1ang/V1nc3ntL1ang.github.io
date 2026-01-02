@@ -34,10 +34,16 @@ layout: compress
 
           <!-- panel -->
           <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+            {% comment %}
             <div class="access">
               {% include_cached update-list.html lang=lang %}
               {% include_cached trending-tags.html lang=lang %}
             </div>
+            {% endcomment %}
+
+            {% unless layout.panel_includes and layout.panel_includes contains 'toc' %}
+              {% include toc.html lang=lang %}
+            {% endunless %}
 
             {% for _include in layout.panel_includes %}
               {% assign _include_path = _include | append: '.html' %}
@@ -84,3 +90,5 @@ layout: compress
     {% include_cached search-loader.html lang=lang %}
   </body>
 </html>
+
+

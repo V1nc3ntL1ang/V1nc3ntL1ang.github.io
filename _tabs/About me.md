@@ -6,41 +6,75 @@ order: 1
 permalink: /Aboutme/
 ---
 
-
-<!-- 第一部分：名字 + 联系方式 + 照片 -->
 <section>
-  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;">
-
-    <!-- 左侧：名字 + 联系方式 -->
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    "
+  >
+    <!-- Left: Name + Contacts -->
     <div style="flex: 1 1 60%; font-size: 1rem; line-height: 1.8;">
-      <h2 style="margin: 0; font-size: 1.8rem;">Letian Liang</h2>
-      <p style="margin: 0.3rem 0; color: var(--text-muted-color); font-size: 1rem;">
-        Undergraduate, Data Science and Big Data Technology<br>
-        <a href="https://www2.scut.edu.cn/ft_en/" target="_blank"><strong>School of Future Technology</strong></a><br>
-        <a href="https://www.scut.edu.cn/en/" target="_blank"><strong>South China University of Technology (SCUT)</strong></a>
+      <h2 style="margin: 0; font-size: 1.8rem; line-height: 1.2;">
+        Letian Liang
+        <span
+          style="
+            margin-left: 0.5rem;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted-color);
+          "
+        >
+          /ləˈtiən ljɑːŋ/
+        </span>
+      </h2>
+
+      <p style="margin: 0.3rem 0 0 0; font-size: 0.95rem; color: var(--text-muted-color);">
+        Call me <strong>Vincent</strong> :)
       </p>
+
+      <p style="margin: 0.5rem 0 0 0; color: var(--text-muted-color); font-size: 1rem;">
+        Undergraduate, Data Science and Big Data Technology<br />
+        <a href="https://www2.scut.edu.cn/ft_en/" target="_blank" rel="noopener noreferrer">
+          <strong>School of Future Technology</strong>
+        </a><br />
+        <a href="https://www.scut.edu.cn/en/" target="_blank" rel="noopener noreferrer">
+          <strong>South China University of Technology (SCUT)</strong>
+        </a>
+      </p>
+
       <p style="margin: 0.8rem 0 0 0; line-height: 2; font-size: 1rem;">
         <i class="fas fa-envelope"></i>
-        Email Address: 
-        <a href="mailto:ftv1nc3ntl1ang@mail.scut.edu.cn" target="_blank">ftv1nc3ntl1ang@mail.scut.edu.cn</a><br>
+        Email Address:
+        <a href="mailto:ftv1nc3ntl1ang@mail.scut.edu.cn">ftv1nc3ntl1ang@mail.scut.edu.cn</a><br />
 
         <i class="fab fa-github"></i>
         Github:
-        <a href="https://github.com/V1nc3ntL1ang" target="_blank">https://github.com/V1nc3ntL1ang</a><br>
-<!-- 
-        <i class="fas fa-globe"></i>
-        <a href="https://V1nc3ntL1ang.github.io" target="_blank">V1nc3ntL1ang.github.io</a><br> -->
-</p>
-
+        <a href="https://github.com/V1nc3ntL1ang" target="_blank" rel="noopener noreferrer">
+          https://github.com/V1nc3ntL1ang
+        </a><br />
+      </p>
     </div>
 
-    <!-- 右侧：头像 -->
+    <!-- Right: Avatar -->
     <div style="flex: 0 0 240px; display: flex; justify-content: center; align-items: center;">
-      <img src="/assets/img/avatars/avatar.png" alt="Letian Liang Portrait"
-           style="width: 100%; aspect-ratio: 2 / 3; object-fit: cover;
-                  border-radius: 12px; border: 2px solid var(--border-color);
-                  background-color: var(--card-bg);
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);">
+      <img
+        src="/assets/img/avatars/avatar.png"
+        alt="Letian Liang Portrait"
+        style="
+          width: 100%;
+          aspect-ratio: 2 / 3;
+          object-fit: cover;
+          border-radius: 12px;
+          border: 2px solid var(--border-color);
+          background-color: var(--card-bg);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        "
+      />
     </div>
 
   </div>
@@ -49,19 +83,21 @@ permalink: /Aboutme/
 ---
 
 ## Introduction
+
 I am an undergraduate student majoring in Data Science and Big Data Technology at South China University of Technology (SCUT).
 
-My research interests focus on developing adaptive learning frameworks that integrate **reinforcement learning** with **agentic multimodal models**, enabling robust reasoning, understanding, and decision-making in complex environments, with a focus on:
+My research interests focus on developing **self-evolving** frameworks that integrate **reinforcement learning** with **agentic multimodal models**, enabling robust reasoning, understanding, and decision-making in complex environments, with a focus on:
 
-- (1) designing agent-based multimodal reasoning frameworks that support structured perception, planning, and problem solving over complex vision–audio–language inputs;
+- (1) designing agent-based multimodal reasoning frameworks that enhance perception, planning, and problem solving ability over complex vision–audio–language inputs;
 
-- (2) leveraging reinforcement learning to drive self-evolving reasoning and understanding in agentic multimodal models, enabling adaptive inference behaviors and robust generalization under distributional shifts;
+- (2) developing self-evolving learning mechanisms that enable agents to autonomously generate, evaluate, and refine training signals through iterative inter-agent interactions, reducing reliance on human supervision and large-scale human-labeled data;
 
-- (3) applying RL-driven methods to real-world decision-making scenarios, such as dynamic scheduling and resource allocation in complex, partially observable systems.
+- (3) applying RL-driven and self-evolving methods to real-world decision-making scenarios, such as dynamic scheduling and resource allocation in complex, partially observable systems, where agents continuously adapt their policies and decision strategies through online interaction and feedback;
 
 ---
 
 ## Education
+
 <style>
 .edu-item {
   display: flex;
@@ -139,7 +175,7 @@ My research interests focus on developing adaptive learning frameworks that inte
     <div class="edu-degree">Majored in Data Science and Big Data Technology</div>
     <div class="edu-date">2023 – Present</div>
     <div class="edu-desc">
-      It is a great privilege to work under the supervision of <a href="https://xw-hu.github.io/" target="_blank">Prof. Xiaowei Hu</a>.
+      It is absolutely a great privilege to work under the supervision of <a href="https://xw-hu.github.io/" target="_blank">Prof. Xiaowei Hu</a>!
     </div>
   </div>
 </div>

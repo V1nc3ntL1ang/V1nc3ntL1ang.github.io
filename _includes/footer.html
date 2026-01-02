@@ -2,48 +2,34 @@
 
 <footer
   aria-label="Site Info"
-  class="
-    d-flex flex-column justify-content-center text-muted
-    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
-  "
+  class="d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3"
 >
-  <p>
-    {{- '©' }}
-    <time>{{ 'now' | date: '%Y' }}</time>
-
+  <!-- Left: Copyright + Last updated -->
+  <p class="mb-1 mb-lg-0">
+    © <time>{{ 'now' | date: '%Y' }}</time>
     {% if site.social.links %}
-      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-    {% else %}
-      <em class="fst-normal">{{ site.social.name }}</em>.
-    {% endif %}
+    <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>. {% else %}
+    <em class="fst-normal">{{ site.social.name }}</em>. {% endif %}
 
-    {% if site.data.locales[include.lang].copyright.brief %}
-      <span
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="{{ site.data.locales[include.lang].copyright.verbose }}"
-      >
-        {{- site.data.locales[include.lang].copyright.brief -}}
-      </span>
-    {% endif %}
+    <span class="ms-2">
+      Last updated:
+      <time datetime="{{ site.time | date_to_xmlschema }}">
+        {{ site.time | date: "%Y-%m-%d" }}
+      </time>
+    </span>
   </p>
 
-  <p>
-    {%- capture _platform -%}
-      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-    {%- endcapture -%}
-
-    {%- capture _theme -%}
-      <a
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="v{{ theme.version }}"
-        href="https://github.com/cotes2020/jekyll-theme-chirpy"
-        target="_blank"
-        rel="noopener"
-      >Chirpy</a>
-    {%- endcapture -%}
-
-    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+  <!-- Right: Platform / Theme -->
+  <p class="mb-0">
+    Built with
+    <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    &
+    <a
+      href="https://github.com/cotes2020/jekyll-theme-chirpy"
+      target="_blank"
+      rel="noopener"
+    >
+      Chirpy
+    </a>
   </p>
 </footer>

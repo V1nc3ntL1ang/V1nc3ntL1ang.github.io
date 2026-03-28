@@ -12,7 +12,6 @@ const educationMedia = [
     src: "/education/sms-campus-main.jpg",
     alt: "Shenzhen Middle School campus",
     position: "50% 52%",
-    imageClassName: "brightness-[0.82] saturate-[0.74] contrast-[1.02]",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.07),rgba(8,10,16,0.2))]"
   },
@@ -20,7 +19,6 @@ const educationMedia = [
     src: "/education/scut-campus-main.jpg",
     alt: "South China University of Technology Guangzhou International Campus",
     position: "50% 54%",
-    imageClassName: "brightness-[0.76] saturate-[0.72] contrast-[1.02]",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.1),rgba(8,10,16,0.28))]"
   },
@@ -28,7 +26,6 @@ const educationMedia = [
     src: "/education/berkeley-campus.jpg",
     alt: "UC Berkeley campus",
     position: "50% 46%",
-    imageClassName: "brightness-[0.81] saturate-[0.7] contrast-[1.01]",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.06),rgba(8,10,16,0.18))]"
   }
@@ -264,7 +261,7 @@ export default function AboutPage() {
             {visibleEducation.map((item, index) => (
               <article
                 key={`education-${item.title}`}
-                className="reveal-group-item grid gap-4 py-5 md:grid-cols-[9.5rem_minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
+                className="reveal-group-item reveal-group-item-lite grid gap-4 py-5 md:grid-cols-[9.5rem_minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
                 style={{ transitionDelay: `${180 + index * 140}ms` }}
               >
                 <div className="md:pt-1">
@@ -305,9 +302,10 @@ export default function AboutPage() {
                       src={educationMedia[index].src}
                       alt={educationMedia[index].alt}
                       fill
-                      className={`object-cover ${educationMedia[index].imageClassName}`}
+                      className="object-cover"
                       style={{ objectPosition: educationMedia[index].position }}
                       sizes="(max-width: 768px) 100vw, 288px"
+                      loading="eager"
                     />
                     <div
                       className={`absolute inset-0 ${educationMedia[index].overlayClassName}`}

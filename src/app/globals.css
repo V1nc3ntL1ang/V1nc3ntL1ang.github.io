@@ -90,6 +90,18 @@ a {
   }
 }
 
+@keyframes reveal-up-lite {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translate3d(0, 24px, 0) scale(0.988);
@@ -106,8 +118,16 @@ a {
   will-change: opacity, transform;
 }
 
+.reveal-group-item-lite {
+  transform: translate3d(0, 18px, 0);
+}
+
 .reveal-group-visible .reveal-group-item {
   animation: reveal-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-group-visible .reveal-group-item-lite {
+  animation: reveal-up-lite 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .site-shell {
@@ -1964,11 +1984,20 @@ section[id],
 }
 
 .footer-clustrmaps {
-  width: min(100%, 300px);
+  width: 300px;
+  max-width: 100%;
 }
 
 .footer-clustrmaps .clustrmaps-widget {
+  width: 300px;
+  max-width: 100%;
   min-height: 147px;
+}
+
+.footer-clustrmaps .clustrmaps-script-host {
+  width: 300px;
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 .footer-clustrmaps .clustrmaps-fallback-image {
@@ -1976,13 +2005,4 @@ section[id],
   width: 300px;
   max-width: 100%;
   height: auto;
-}
-
-.footer-clustrmaps iframe,
-.footer-clustrmaps img,
-.footer-clustrmaps canvas,
-.footer-clustrmaps svg {
-  width: auto !important;
-  max-width: 300px;
-  height: auto !important;
 }

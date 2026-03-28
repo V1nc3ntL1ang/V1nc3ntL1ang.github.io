@@ -6,7 +6,7 @@ const clustrmapsImageSrc =
   "//clustrmaps.com/map_v2.png?cl=9aa3ad&w=300&t=m&d=024_XSDGHqaW8jd_OakM3Cy7vmPgM8uYvEmWqI7XiDo&co=050505&ct=ffffff";
 
 const clustrmapsScriptSrc =
-  "//cdn.clustrmaps.com/map_v2.js?cl=9aa3ad&w=a&t=m&d=024_XSDGHqaW8jd_OakM3Cy7vmPgM8uYvEmWqI7XiDo&co=050505&ct=ffffff&cmo=1f9bff&cmn=ff5a6b";
+  "//cdn.clustrmaps.com/map_v2.js?cl=9aa3ad&w=300&t=m&d=024_XSDGHqaW8jd_OakM3Cy7vmPgM8uYvEmWqI7XiDo&co=050505&ct=ffffff&cmo=1f9bff&cmn=ff5a6b";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -51,7 +51,7 @@ export function ClustrmapsWidget() {
 
   return (
     <div className="clustrmaps-widget w-full text-center">
-      <div ref={hostRef} />
+      <div ref={hostRef} className="clustrmaps-script-host" />
     </div>
   );
 }

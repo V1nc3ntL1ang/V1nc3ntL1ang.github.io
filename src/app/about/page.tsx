@@ -9,21 +9,21 @@ const aboutHeroCopy =
   "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems.";
 const educationMedia = [
   {
-    src: "/education/sms.webp",
+    src: "/education/cards/sms-campus-main.webp",
     alt: "Shenzhen Middle School campus",
     position: "50% 52%",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.07),rgba(8,10,16,0.2))]"
   },
   {
-    src: "/education/scut.webp",
+    src: "/education/cards/scut-campus-main.webp",
     alt: "South China University of Technology Guangzhou International Campus",
     position: "50% 54%",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.1),rgba(8,10,16,0.28))]"
   },
   {
-    src: "/education/berkeley.webp",
+    src: "/education/cards/berkeley-campus.webp",
     alt: "UC Berkeley campus",
     position: "50% 46%",
     overlayClassName:

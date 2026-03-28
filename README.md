@@ -1,7 +1,7 @@
-# Vincent Liang
+# Vincent Liang's Website
 
-Welcome to my site.
+Hi, I'm Vincnet. Welcome to my website!
 
-Visit the live website:
+Visit the live website at [v1nc3ntl1ang.github.io](https://v1nc3ntl1ang.github.io)
 
-[v1nc3ntl1ang.github.io](https://v1nc3ntl1ang.github.io)
+

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://v1nc3ntliang.github.io"),
+  metadataBase: new URL("https://v1nc3ntl1ang.github.io"),
   title: {
     default: "Vincent Liang",
     template: "%s | Vincent Liang",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     "Personal website of Vincent Liang, a third-year undergraduate at South China University of Technology, interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.",
   applicationName: "Vincent Liang",
   alternates: {
-    canonical: "https://v1nc3ntliang.github.io",
+    canonical: "https://v1nc3ntl1ang.github.io",
   },
   authors: [
     {
       name: "Vincent Liang",
-      url: "https://v1nc3ntliang.github.io",
+      url: "https://v1nc3ntl1ang.github.io",
     },
   ],
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Vincent Liang",
     description:
       "Personal website of Vincent Liang, a third-year undergraduate at South China University of Technology, interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.",
-    url: "https://v1nc3ntliang.github.io",
+    url: "https://v1nc3ntl1ang.github.io",
     siteName: "Vincent Liang",
     type: "website",
     images: [

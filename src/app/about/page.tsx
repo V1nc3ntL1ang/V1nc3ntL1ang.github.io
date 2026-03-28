@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { HomeFocusVisual } from "@/components/home-focus-visual";
-import { RevealGroup } from "@/components/reveal";
+import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";
 
 const visibleFocusAreas = focusAreas.filter((item) => !item.hidden);
@@ -244,11 +244,8 @@ export default function AboutPage() {
         id="education"
         className="site-shell flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[2.5rem] md:py-[3.5rem]"
       >
-        <RevealGroup as="div">
-          <div
-            className="reveal-group-item mb-8 max-w-3xl"
-            style={{ transitionDelay: "40ms" }}
-          >
+        <div>
+          <Reveal className="mb-8 max-w-3xl" mode="in-view">
             <p className="eyebrow">Education</p>
             <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.94] tracking-[-0.05em] font-medium text-foreground">
               Academic background
@@ -256,17 +253,14 @@ export default function AboutPage() {
             <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.01em] text-foreground-60 md:text-lg md:leading-8">
               Academic environments that shaped how I perceive, think, and act.
             </p>
-          </div>
+          </Reveal>
           <div className="divide-y divide-border-subtle border-y border-border-subtle">
             {visibleEducation.map((item, index) => (
               <article
                 key={`education-${item.title}`}
                 className="grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
               >
-                <div
-                  className="reveal-group-item reveal-group-item-lite grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
-                  style={{ transitionDelay: `${180 + index * 140}ms` }}
-                >
+                <div className="grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6">
                   <div className="md:pt-1">
                     <p className="education-period">{item.period}</p>
                     <p className="mt-3 text-[17px] leading-7 text-foreground">
@@ -319,7 +313,7 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
-        </RevealGroup>
+        </div>
       </section>
     </div>
   );

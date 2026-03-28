@@ -9,21 +9,21 @@ const aboutHeroCopy =
   "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems.";
 const educationMedia = [
   {
-    src: "/education/sms-campus-main.jpg",
+    src: "/education/sms.webp",
     alt: "Shenzhen Middle School campus",
     position: "50% 52%",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.07),rgba(8,10,16,0.2))]"
   },
   {
-    src: "/education/scut-campus-main.jpg",
+    src: "/education/scut.webp",
     alt: "South China University of Technology Guangzhou International Campus",
     position: "50% 54%",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(92,118,156,0.1),rgba(8,10,16,0.28))]"
   },
   {
-    src: "/education/berkeley-campus.jpg",
+    src: "/education/berkeley.webp",
     alt: "UC Berkeley campus",
     position: "50% 46%",
     overlayClassName:
@@ -261,39 +261,43 @@ export default function AboutPage() {
             {visibleEducation.map((item, index) => (
               <article
                 key={`education-${item.title}`}
-                className="reveal-group-item reveal-group-item-lite grid gap-4 py-5 md:grid-cols-[9.5rem_minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
-                style={{ transitionDelay: `${180 + index * 140}ms` }}
+                className="grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
               >
-                <div className="md:pt-1">
-                  <p className="education-period">{item.period}</p>
-                  <p className="mt-3 text-[17px] leading-7 text-foreground">
-                    {item.location}
-                  </p>
-                </div>
+                <div
+                  className="reveal-group-item reveal-group-item-lite grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
+                  style={{ transitionDelay: `${180 + index * 140}ms` }}
+                >
+                  <div className="md:pt-1">
+                    <p className="education-period">{item.period}</p>
+                    <p className="mt-3 text-[17px] leading-7 text-foreground">
+                      {item.location}
+                    </p>
+                  </div>
 
-                <div className="max-w-3xl md:pt-0.5">
-                  <h3 className="text-[1.65rem] font-medium tracking-[-0.03em] text-foreground">
-                    <a
-                      className="entity-title-link"
-                      href={educationLinks[index]}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {item.title}
-                      <span
-                        aria-hidden="true"
-                        className="link-arrow text-[0.85em] leading-none"
+                  <div className="max-w-3xl md:pt-0.5">
+                    <h3 className="text-[1.65rem] font-medium tracking-[-0.03em] text-foreground">
+                      <a
+                        className="entity-title-link"
+                        href={educationLinks[index]}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        ↗
-                      </span>
-                    </a>
-                  </h3>
-                  <p className="mt-2 text-[17px] leading-7 text-foreground-60">
-                    {item.subtitle}
-                  </p>
-                  <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.01em] text-foreground-44">
-                    {renderEducationDescription(item)}
-                  </p>
+                        {item.title}
+                        <span
+                          aria-hidden="true"
+                          className="link-arrow text-[0.85em] leading-none"
+                        >
+                          ↗
+                        </span>
+                      </a>
+                    </h3>
+                    <p className="mt-2 text-[17px] leading-7 text-foreground-60">
+                      {item.subtitle}
+                    </p>
+                    <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.01em] text-foreground-44">
+                      {renderEducationDescription(item)}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="md:justify-self-end">

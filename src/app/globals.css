@@ -60,6 +60,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -1812,6 +1813,7 @@ section[id],
 .nav-search-results {
   color-scheme: dark;
   background: transparent;
+  overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.08) rgba(255, 255, 255, 0.025);
   scrollbar-gutter: stable;
@@ -1905,13 +1907,13 @@ section[id],
 }
 
 .nav-overlay {
-  transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.26s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-panel {
   transition:
-    height 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    height 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.26s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-menu-layer {
@@ -1923,7 +1925,7 @@ section[id],
 }
 
 .nav-menu-content-exit {
-  animation: nav-menu-fade-out 0.2s linear forwards;
+  animation: nav-menu-fade-out 0.26s linear forwards;
   pointer-events: none;
 }
 

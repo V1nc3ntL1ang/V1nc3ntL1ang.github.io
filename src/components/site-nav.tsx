@@ -228,6 +228,7 @@ export function SiteNav() {
   const exitingTimeoutRef = useRef<number | null>(null);
   const currentOpenItemRef = useRef<MenuKey | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const searchResultsRef = useRef<HTMLDivElement | null>(null);
 
   const isPanelOpen = openItem !== null;
   const panelHeight = isPanelOpen ? contentHeight : 0;
@@ -369,7 +370,7 @@ export function SiteNav() {
       setExitingSnapshot((current) => (current?.key === exitingSnapshot.key ? null : current));
       setIsCrossfading(false);
       exitingTimeoutRef.current = null;
-    }, 200);
+    }, 260);
 
     return clearExitTimer;
   }, [exitingSnapshot]);
@@ -428,6 +429,33 @@ export function SiteNav() {
 
     return () => window.cancelAnimationFrame(frame);
   }, [closeMenu, closeSearch, openSearch, searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) {
+      return;
+    }
+
+    const preventBackgroundScroll = (event: WheelEvent | TouchEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if (searchResultsRef.current?.contains(target)) {
+        return;
+      }
+
+      event.preventDefault();
+    };
+
+    document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
+    document.addEventListener("touchmove", preventBackgroundScroll, { passive: false });
+
+    return () => {
+      document.removeEventListener("wheel", preventBackgroundScroll);
+      document.removeEventListener("touchmove", preventBackgroundScroll);
+    };
+  }, [searchOpen]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -646,7 +674,10 @@ export function SiteNav() {
               />
             </div>
 
-            <div className="nav-search-results max-h-[22rem] overflow-y-auto p-3">
+            <div
+              ref={searchResultsRef}
+              className="nav-search-results max-h-[22rem] overflow-y-auto p-3"
+            >
               <div className="mb-2 flex items-center justify-between px-2">
                 <p className="nav-group-title">Search</p>
                 <p className="text-xs tracking-[0.02em] text-foreground-44">Press / to open, Esc to close</p>

@@ -1810,6 +1810,41 @@ section[id],
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
 }
 
+.nav-search-results {
+  color-scheme: dark;
+  background: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) rgba(255, 255, 255, 0.025);
+  scrollbar-gutter: stable;
+}
+
+.nav-search-results::-webkit-scrollbar {
+  width: 13px;
+}
+
+.nav-search-results::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 9999px;
+}
+
+.nav-search-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  background-clip: padding-box;
+  transition: background-color 0.2s linear;
+}
+
+.nav-search-results:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.nav-search-results::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .nav-search-input {
   width: 100%;
   border: 0;

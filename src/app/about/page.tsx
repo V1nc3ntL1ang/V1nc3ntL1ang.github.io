@@ -7,34 +7,6 @@ const visibleFocusAreas = focusAreas.filter((item) => !item.hidden);
 const visibleEducation = education.filter((item) => !item.hidden);
 const aboutHeroCopy =
   "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems.";
-const educationMedia = [
-  {
-    src: "/education/cards/sms-campus-main.webp",
-    alt: "Shenzhen Middle School campus",
-    position: "50% 52%",
-    overlayClassName:
-      "bg-[linear-gradient(180deg,rgba(92,118,156,0.07),rgba(8,10,16,0.2))]"
-  },
-  {
-    src: "/education/cards/scut-campus-main.webp",
-    alt: "South China University of Technology Guangzhou International Campus",
-    position: "50% 54%",
-    overlayClassName:
-      "bg-[linear-gradient(180deg,rgba(92,118,156,0.1),rgba(8,10,16,0.28))]"
-  },
-  {
-    src: "/education/cards/berkeley-campus.webp",
-    alt: "UC Berkeley campus",
-    position: "50% 46%",
-    overlayClassName:
-      "bg-[linear-gradient(180deg,rgba(92,118,156,0.06),rgba(8,10,16,0.18))]"
-  }
-];
-const educationLinks = [
-  "https://www.shenzhong.net/",
-  "https://www.scut.edu.cn/en/",
-  "https://www.berkeley.edu/"
-];
 export default function AboutPage() {
   const renderEducationDescription = (
     item: (typeof visibleEducation)[number]
@@ -254,13 +226,19 @@ export default function AboutPage() {
               Academic environments that shaped how I perceive, think, and act.
             </p>
           </Reveal>
-          <div className="divide-y divide-border-subtle border-y border-border-subtle">
+          <RevealGroup
+            as="div"
+            className="divide-y divide-border-subtle border-y border-border-subtle"
+          >
             {visibleEducation.map((item, index) => (
               <article
                 key={`education-${item.title}`}
                 className="grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
               >
-                <div className="grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6">
+                <div
+                  className="reveal-group-item grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
+                  style={{ transitionDelay: `${120 + index * 110}ms` }}
+                >
                   <div className="md:pt-1">
                     <p className="education-period">{item.period}</p>
                     <p className="mt-3 text-[17px] leading-7 text-foreground">
@@ -272,7 +250,7 @@ export default function AboutPage() {
                     <h3 className="text-[1.65rem] font-medium tracking-[-0.03em] text-foreground">
                       <a
                         className="entity-title-link"
-                        href={educationLinks[index]}
+                        href={item.href}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -294,25 +272,28 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="md:justify-self-end">
+                <div
+                  className="reveal-group-item reveal-group-item-lite md:justify-self-end"
+                  style={{ transitionDelay: `${180 + index * 110}ms` }}
+                >
                   <div className="relative aspect-[1.14/0.88] w-full overflow-hidden rounded-[1.45rem] bg-background-soft md:w-[15rem]">
                     <Image
-                      src={educationMedia[index].src}
-                      alt={educationMedia[index].alt}
+                      src={item.media.src}
+                      alt={item.media.alt}
                       fill
                       className="object-cover"
-                      style={{ objectPosition: educationMedia[index].position }}
+                      style={{ objectPosition: item.media.position }}
                       sizes="(max-width: 768px) 100vw, 288px"
                       loading="eager"
                     />
                     <div
-                      className={`absolute inset-0 ${educationMedia[index].overlayClassName}`}
+                      className={`absolute inset-0 ${item.media.overlayClassName}`}
                     />
                   </div>
                 </div>
               </article>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
     </div>

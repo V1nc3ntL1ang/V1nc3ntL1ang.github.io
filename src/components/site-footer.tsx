@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { profile } from "@/lib/site-content";
 import { ClustrmapsWidget } from "@/components/clustrmaps-widget";
 
@@ -81,8 +81,8 @@ export function SiteFooter() {
 
         <div className="text-sm leading-7 text-foreground-60 md:justify-self-center">
           <p>
-            <span className="text-foreground">© 2026 Letian Liang.</span>
-            <span className="ms-3">Last updated: Jan. 2026</span>
+            <span className="text-foreground">&copy; 2026 Letian Liang.</span>
+            <span className="ms-3">Last updated: March 2026</span>
           </p>
         </div>
 

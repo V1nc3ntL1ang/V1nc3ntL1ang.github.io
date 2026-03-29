@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -46,7 +46,7 @@ const navMenus = {
 } as const;
 
 const overviewSearchText =
-  "Hi, I'm Vincent. Welcome to my website. I'm currently a third-year undergraduate majoring in Data Science and Big Data Technology at South China University of Technology. I'm interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.";
+  "Hi, I'm Vincent. Welcome to my website. I love working with AI \u2014 and working on it. I like building things with strong ideas and clean execution. I'm drawn to work that feels thoughtful, clear, and quietly confident. You can reach me by email. If you're interested, feel free to take a look at my GitHub.";
 const aboutOverviewSearchText =
   "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems. Letian Liang / Vincent. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
 
@@ -85,7 +85,7 @@ const searchItems: SearchItem[] = [
   },
   {
     id: "about-overview",
-    section: "About · Overview",
+    section: "About / Overview",
     label: "Overview",
     description: "Profile, affiliation, and current direction",
     href: "/about#overview",
@@ -104,7 +104,7 @@ const searchItems: SearchItem[] = [
     .filter((item) => !item.hidden)
     .map((item, index) => ({
       id: `about-research-${index}`,
-      section: "About · Research interests",
+      section: "About / Research interests",
       label: item.title,
       description: item.description,
       href: "/about#research",
@@ -120,7 +120,7 @@ const searchItems: SearchItem[] = [
     .filter((item) => !item.hidden)
     .map((item, index) => ({
       id: `about-education-${index}`,
-      section: "About · Academic background",
+      section: "About / Academic background",
       label: item.title,
       description: item.subtitle,
       href: "/about#education",
@@ -160,8 +160,8 @@ function extractSnippet(source: string, query: string) {
 
   const start = Math.max(0, matchIndex - 40);
   const end = Math.min(trimmedSource.length, matchIndex + query.length + 70);
-  const prefix = start > 0 ? "…" : "";
-  const suffix = end < trimmedSource.length ? "…" : "";
+  const prefix = start > 0 ? "..." : "";
+  const suffix = end < trimmedSource.length ? "..." : "";
 
   return `${prefix}${trimmedSource.slice(start, end).trim()}${suffix}`;
 }
@@ -478,7 +478,7 @@ export function SiteNav() {
               >
                 <span>{link.label}</span>
                 <span aria-hidden="true" className="nav-link-arrow">
-                  ↗
+                  {"\u2197"}
                 </span>
               </Link>
             </li>
@@ -501,7 +501,7 @@ export function SiteNav() {
                   >
                     <span>{link.label}</span>
                     <span aria-hidden="true" className="nav-link-arrow">
-                      ↗
+                      {"\u2197"}
                     </span>
                   </Link>
                 </li>
@@ -636,7 +636,7 @@ export function SiteNav() {
               />
             </div>
 
-            <div className="max-h-[22rem] overflow-y-auto p-3">
+            <div className="nav-search-results max-h-[22rem] overflow-y-auto p-3">
               <div className="mb-2 flex items-center justify-between px-2">
                 <p className="nav-group-title">Search</p>
                 <p className="text-xs tracking-[0.02em] text-foreground-44">Press / to open, Esc to close</p>
@@ -661,7 +661,7 @@ export function SiteNav() {
                           </p>
                         </div>
                         <span aria-hidden="true" className="nav-search-link-arrow">
-                          ↗
+                          {"\u2197"}
                         </span>
                       </Link>
                     </li>

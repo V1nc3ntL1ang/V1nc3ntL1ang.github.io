@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Vincent Liang",
   },
   description:
-    "Personal website of Vincent Liang, a third-year undergraduate at South China University of Technology, interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.",
+    "Personal website of Vincent Liang.",
   applicationName: "Vincent Liang",
   alternates: {
     canonical: "https://v1nc3ntl1ang.github.io",
@@ -37,9 +37,6 @@ export const metadata: Metadata = {
     "Letian Liang",
     "South China University of Technology",
     "artificial intelligence",
-    "multi-agent systems",
-    "open-ended learning",
-    "multimodal language model systems",
   ],
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -48,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vincent Liang",
     description:
-      "Personal website of Vincent Liang, a third-year undergraduate at South China University of Technology, interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.",
+      "Personal website of Vincent Liang.",
     url: "https://v1nc3ntl1ang.github.io",
     siteName: "Vincent Liang",
     type: "website",
@@ -65,8 +62,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Vincent Liang",
     description:
-      "Personal website of Vincent Liang, a third-year undergraduate at South China University of Technology, interested in artificial intelligence, especially multi-agent systems, open-ended learning, and multimodal language model systems.",
-    images: ["/home/vincent-dog-avatar.png"],
+      "Personal website of Vincent Liang."
   },
   robots: {
     index: true,

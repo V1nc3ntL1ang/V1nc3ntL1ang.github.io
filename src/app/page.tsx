@@ -31,29 +31,13 @@ export default function Home() {
               className="reveal-group-item mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.012em] text-foreground-60 md:mt-12 md:text-[1.18rem] md:leading-9"
               style={{ transitionDelay: "180ms" }}
             >
+              <p>I love working with AI — and working on it.</p>
               <p>
-                I&apos;m currently a third-year undergraduate majoring in Data
-                Science and Big Data Technology at{" "}
-                <a
-                  className="entity-inline-link"
-                  href="https://www.scut.edu.cn/en/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  South China University of Technology
-                  <span
-                    aria-hidden="true"
-                    className="link-arrow text-[0.85em] leading-none"
-                  >
-                    ↗
-                  </span>
-                </a>
-                .
+                I like building things with strong ideas and clean execution.
               </p>
               <p>
-                I&apos;m interested in artificial intelligence, especially
-                multi-agent systems, open-ended learning, and multimodal large
-                language model systems.
+                I&apos;m drawn to work that feels thoughtful, clear, and quietly
+                confident.
               </p>
               <p>
                 You can reach me by{" "}
@@ -95,7 +79,7 @@ export default function Home() {
               <Link href="/about" className="home-learn-link">
                 <span>Learn more about me</span>
                 <span className="home-learn-link-arrow" aria-hidden="true">
-                  ›
+                  →
                 </span>
               </Link>
             </div>

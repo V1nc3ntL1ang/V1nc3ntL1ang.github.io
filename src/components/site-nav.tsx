@@ -436,6 +436,7 @@ export function SiteNav() {
         target instanceof HTMLInputElement ||
         target instanceof HTMLTextAreaElement ||
         target?.isContentEditable;
+      const isSearchInputTarget = target === searchInputRef.current;
 
       if (event.key === "Escape") {
         closeMenu();
@@ -443,7 +444,7 @@ export function SiteNav() {
         return;
       }
 
-      if (!searchOpen && !isTypingField && event.key === "/") {
+      if (!searchOpen && (!isTypingField || isSearchInputTarget) && event.key === "/") {
         event.preventDefault();
         openSearch();
       }

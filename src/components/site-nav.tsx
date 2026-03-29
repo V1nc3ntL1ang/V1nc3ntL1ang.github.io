@@ -622,9 +622,17 @@ export function SiteNav() {
         className={`fixed inset-x-0 top-16 z-[52] ${
           searchOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         } transition-opacity duration-200`}
+        onClick={() => {
+          closeSearch();
+        }}
       >
         <div className="site-shell py-6">
-          <div className="nav-search-panel mx-auto max-w-[42rem]">
+          <div
+            className="nav-search-panel mx-auto max-w-[42rem]"
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
             <div className="border-b border-border-subtle px-5 py-4">
               <input
                 ref={searchInputRef}

@@ -322,6 +322,7 @@ export function SiteNav() {
   }, []);
 
   const closeSearch = useCallback(() => {
+    searchInputRef.current?.blur();
     setSearchOpen(false);
     setSearchQuery("");
   }, []);

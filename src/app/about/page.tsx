@@ -1,42 +1,33 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { HomeFocusVisual } from "@/components/home-focus-visual";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";
 
 const visibleFocusAreas = focusAreas.filter((item) => !item.hidden);
 const visibleEducation = education.filter((item) => !item.hidden);
-const aboutHeroCopy =
-  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems.";
+const aboutHeroCopy = (
+  <>
+    I study Data Science and Big Data Technology at South China University of
+    Technology, where I am fortunate to work under the supervision of{" "}
+    <a
+      className="entity-inline-link"
+      href="https://xw-hu.github.io/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Prof. Xiaowei Hu
+      <span
+        aria-hidden="true"
+        className="link-arrow text-[0.85em] leading-none"
+      >
+        {"\u2197"}
+      </span>
+    </a>
+    . I&apos;m interested in artificial intelligence, especially multi-agent
+    systems, open-ended learning, and multimodal large language model systems.
+  </>
+);
 export default function AboutPage() {
-  const renderEducationDescription = (
-    item: (typeof visibleEducation)[number]
-  ) => {
-    if (item.title === "South China University of Technology") {
-      return (
-        <>
-          My current academic base. It has been an utmost privilege to work
-          under the supervision of{" "}
-          <a
-            className="entity-inline-link"
-            href="https://xw-hu.github.io/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Prof. Xiaowei Hu
-            <span
-              aria-hidden="true"
-              className="link-arrow text-[0.85em] leading-none"
-            >
-              ↗
-            </span>
-          </a>
-          .
-        </>
-      );
-    }
-
-    return item.description;
-  };
   return (
     <div>
       <section
@@ -267,7 +258,7 @@ export default function AboutPage() {
                       {item.subtitle}
                     </p>
                     <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.01em] text-foreground-44">
-                      {renderEducationDescription(item)}
+                      {item.description}
                     </p>
                   </div>
                 </div>

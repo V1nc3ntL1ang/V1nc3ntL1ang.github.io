@@ -102,7 +102,7 @@ export const education: EducationEntry[] = [
     period: "2023-Present",
     location: "Guangzhou, China",
     description:
-      "My current academic base. It has been a privilege to work under the supervision of Prof. Xiaowei Hu.",
+      "My current academic base, where I am laying my academic foundation and shaping the direction I hope to pursue over time.",
     href: "https://www.scut.edu.cn/en/",
     media: {
       src: "/education/cards/scut-campus-main.webp",

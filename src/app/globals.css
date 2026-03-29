@@ -232,7 +232,7 @@ section[id],
   border-radius: 9999px;
   background: var(--border);
   padding: 0 1.25rem;
-  color: var(--text);
+  color: var(--text-80);
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -246,7 +246,6 @@ section[id],
 .home-learn-link:hover {
   color: var(--text);
   background: var(--border-strong);
-  transform: translateY(-1px);
 }
 
 .home-learn-link-arrow {

@@ -215,6 +215,7 @@ function SearchIcon() {
 
 export function SiteNav() {
   const pathname = usePathname();
+  const normalizedPathname = pathname.replace(/\/$/, "") || "/";
   const [openItem, setOpenItem] = useState<MenuKey | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -588,9 +589,58 @@ export function SiteNav() {
               <button
                 type="button"
                 aria-label="Open search"
+                aria-expanded={searchOpen}
+                aria-controls="site-search-panel"
                 className="nav-icon-button"
                 onMouseEnter={closeMenu}
                 onFocus={closeMenu}
+                onClick={() => {
+                  if (searchOpen) {
+                    closeSearch();
+                    return;
+                  }
+
+                  openSearch();
+                }}
+              >
+                <SearchIcon />
+              </button>
+            </div>
+
+            <div className="ml-auto flex h-full items-center gap-1 lg:hidden">
+              <nav className="flex h-full items-center" aria-label="Mobile navigation">
+                <ul className="flex h-full items-center">
+                  {navItems
+                    .filter((item) => !item.hidden)
+                    .map((item) => {
+                      const normalizedHref = item.href.replace(/\/$/, "") || "/";
+                      const isCurrent = normalizedPathname === normalizedHref;
+
+                      return (
+                        <li key={item.href} className="flex h-full items-center">
+                          <Link
+                            href={item.href}
+                            aria-current={isCurrent ? "page" : undefined}
+                            onClick={() => {
+                              closeMenu();
+                              closeSearch();
+                            }}
+                            className="mobile-nav-link"
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </nav>
+
+              <button
+                type="button"
+                aria-label="Open search"
+                aria-expanded={searchOpen}
+                aria-controls="site-search-panel"
+                className="nav-icon-button"
                 onClick={() => {
                   if (searchOpen) {
                     closeSearch();
@@ -658,6 +708,7 @@ export function SiteNav() {
       >
         <div className="site-shell py-6">
           <div
+            id="site-search-panel"
             className="nav-search-panel mx-auto max-w-[42rem]"
             onClick={(event) => {
               event.stopPropagation();

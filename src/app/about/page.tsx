@@ -1,5 +1,4 @@
 ﻿import Image from "next/image";
-import { HomeFocusVisual } from "@/components/home-focus-visual";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";
 
@@ -27,6 +26,114 @@ const aboutHeroCopy = (
     systems, open-ended learning, and multimodal large language model systems.
   </>
 );
+
+type InterestVisualStyle = "ambient" | "quiet" | "etched";
+type VisibleFocusArea = (typeof visibleFocusAreas)[number];
+
+function SignalPath({
+  className = "",
+  d,
+}: {
+  className?: string;
+  d: string;
+}) {
+  const lineClassName = `interest-line${className ? ` ${className}` : ""}`;
+  const runnerClassName = `interest-signal-runner${className ? ` ${className}` : ""}`;
+
+  return (
+    <>
+      <path className={lineClassName} d={d} />
+      <path className={runnerClassName} d={d} pathLength={1} />
+    </>
+  );
+}
+
+function SignalLoop({
+  className = "",
+  d,
+}: {
+  className?: string;
+  d: string;
+}) {
+  const runnerClassName = `interest-loop-runner${className ? ` ${className}` : ""}`;
+
+  return <path className={runnerClassName} d={d} pathLength={1} />;
+}
+
+function InterestVisual({
+  index,
+  style,
+}: {
+  index: number;
+  style: InterestVisualStyle;
+}) {
+  return (
+    <div
+      className={`interest-visual interest-visual-${style} interest-visual-tone-${index + 1}`}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 320 220" className="interest-visual-svg">
+        {index === 0 ? (
+          <circle className="interest-accent-ring" cx="160" cy="110" r="58" />
+        ) : null}
+        {index === 0 ? (
+          <g className="interest-verb-mark">
+            <SignalPath className="interest-runner-phase-1" d="M150 103 111 75" />
+            <SignalPath className="interest-line-soft interest-runner-phase-2" d="M170 103 209 75" />
+            <SignalPath className="interest-line-soft interest-runner-phase-3" d="M170 117 209 145" />
+            <SignalPath className="interest-line-faint interest-runner-phase-4" d="M150 117 111 145" />
+            <circle className="interest-node interest-node-strong" cx="160" cy="110" r="12" />
+            <circle className="interest-node" cx="104" cy="70" r="9" />
+            <circle className="interest-node" cx="216" cy="70" r="9" />
+            <circle className="interest-node" cx="216" cy="150" r="9" />
+            <circle className="interest-node" cx="104" cy="150" r="9" />
+            <circle className="interest-node interest-node-small" cx="160" cy="110" r="4" />
+          </g>
+        ) : index === 1 ? (
+          <g className="interest-verb-mark">
+            <rect className="interest-shape" x="104" y="86" width="112" height="52" rx="26" />
+            <rect className="interest-shape interest-shape-soft" x="121" y="70" width="112" height="52" rx="26" />
+            <rect className="interest-shape interest-shape-faint" x="87" y="102" width="112" height="52" rx="26" />
+            <SignalLoop className="interest-runner-phase-2" d="M130 86 H190 C204.4 86 216 97.6 216 112 C216 126.4 204.4 138 190 138 H130 C115.6 138 104 126.4 104 112 C104 97.6 115.6 86 130 86 Z" />
+            <SignalLoop className="interest-line-soft interest-runner-phase-4" d="M147 70 H207 C221.4 70 233 81.6 233 96 C233 110.4 221.4 122 207 122 H147 C132.6 122 121 110.4 121 96 C121 81.6 132.6 70 147 70 Z" />
+            <SignalLoop className="interest-line-faint interest-runner-phase-1" d="M113 102 H173 C187.4 102 199 113.6 199 128 C199 142.4 187.4 154 173 154 H113 C98.6 154 87 142.4 87 128 C87 113.6 98.6 102 113 102 Z" />
+          </g>
+        ) : (
+          <g className="interest-verb-mark">
+            <SignalPath className="interest-runner-phase-1" d="M96 78 H137 C171 78 183 110 214 110" />
+            <SignalPath className="interest-runner-phase-3" d="M96 110 H214" />
+            <SignalPath className="interest-runner-phase-2" d="M96 142 H137 C171 142 183 110 214 110" />
+            <rect className="interest-pill" x="76" y="67" width="54" height="22" rx="11" />
+            <rect className="interest-pill" x="76" y="99" width="54" height="22" rx="11" />
+            <rect className="interest-pill" x="76" y="131" width="54" height="22" rx="11" />
+            <rect className="interest-shape" x="214" y="88" width="46" height="44" rx="15" />
+            <circle className="interest-node interest-node-strong" cx="237" cy="110" r="10" />
+            <circle className="interest-node interest-node-small" cx="237" cy="110" r="4" />
+          </g>
+        )}
+      </svg>
+    </div>
+  );
+}
+
+function InterestCopy({
+  item,
+  index,
+  compact = false,
+}: {
+  item: VisibleFocusArea;
+  index: number;
+  compact?: boolean;
+}) {
+  return (
+    <div className={`interest-copy${compact ? " interest-copy-compact" : ""}`}>
+      <p className="interest-index">{String(index + 1).padStart(2, "0")}</p>
+      <h3 className="interest-title">{item.title}</h3>
+      <p className="interest-description">{item.description}</p>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <div>
@@ -44,11 +151,11 @@ export default function AboutPage() {
             style={{ transitionDelay: "40ms" }}
           >
             <p className="eyebrow">Overview</p>
-            <h1 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.94] tracking-[-0.05em] font-medium text-foreground">
+            <h1 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
               Undergraduate at SCUT, majoring in Data Science and Big Data
               Technology
             </h1>
-            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.01em] text-foreground-60 md:text-lg md:leading-8">
+            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
               {aboutHeroCopy}
             </p>
           </div>
@@ -158,45 +265,22 @@ export default function AboutPage() {
             style={{ transitionDelay: "40ms" }}
           >
             <p className="eyebrow">Research interests</p>
-            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.94] tracking-[-0.05em] font-medium text-foreground">
+            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
               Current interests
             </h2>
-            <p className="mt-5 max-w-[40rem] text-[17px] leading-8 tracking-[-0.01em] text-foreground-60 md:text-lg md:leading-8">
+            <p className="mt-5 max-w-[40rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
               The areas that currently hold most of my academic attention.
             </p>
           </div>
-          <div className="research-panels md:grid md:grid-cols-3">
+          <div className="interest-card-grid interest-card-grid-art">
             {visibleFocusAreas.map((item, index) => (
               <article
-                key={item.title}
-                className={`reveal-group-item home-focus-panel border-t border-border-subtle py-6 md:border-t-0 md:py-8 ${
-                  index === 0 ? "" : "md:border-l md:border-border-subtle"
-                }`}
-                style={{ transitionDelay: `${140 + index * 110}ms` }}
+                key={`interest-final-${item.title}`}
+                className="interest-card interest-card-ambient interest-card-art interest-card-motion-window interest-card-motion-signal"
+                style={{ transitionDelay: `${140 + index * 90}ms` }}
               >
-                <div className="px-5 md:px-6">
-                  <div className="home-focus-visual-frame">
-                    <HomeFocusVisual
-                      variant={
-                        index === 0
-                          ? "agents"
-                          : index === 1
-                            ? "learning"
-                            : "multimodal"
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="px-6 pt-6 md:px-8">
-                  <div className="home-focus-copy">
-                    <h3 className="max-w-[15rem] text-[1.9rem] font-medium leading-[1.02] tracking-[-0.045em] text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 max-w-[22rem] text-[17px] leading-8 tracking-[-0.012em] text-foreground-60">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+                <InterestVisual index={index} style="ambient" />
+                <InterestCopy item={item} index={index} />
               </article>
             ))}
           </div>
@@ -210,10 +294,10 @@ export default function AboutPage() {
         <div>
           <Reveal className="mb-8 max-w-3xl" mode="in-view">
             <p className="eyebrow">Education</p>
-            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.94] tracking-[-0.05em] font-medium text-foreground">
+            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
               Academic background
             </h2>
-            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.01em] text-foreground-60 md:text-lg md:leading-8">
+            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
               Academic environments that shaped how I perceive, think, and act.
             </p>
           </Reveal>
@@ -254,10 +338,10 @@ export default function AboutPage() {
                         </span>
                       </a>
                     </h3>
-                    <p className="mt-2 text-[17px] leading-7 text-foreground-60">
+                    <p className="mt-2 text-[17px] leading-7 text-foreground-70">
                       {item.subtitle}
                     </p>
-                    <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.01em] text-foreground-44">
+                    <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.008em] text-foreground-60">
                       {item.description}
                     </p>
                   </div>

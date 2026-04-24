@@ -21,14 +21,14 @@ export default function Home() {
             </p>
 
             <h1
-              className="reveal-group-item mt-5 max-w-[14ch] text-[clamp(3rem,7.8vw,5.9rem)] leading-[0.92] tracking-[-0.055em] font-medium text-foreground"
+              className="reveal-group-item mt-5 max-w-[14ch] text-[clamp(3rem,7.8vw,5.9rem)] leading-[0.93] tracking-[-0.048em] font-medium text-foreground"
               style={{ transitionDelay: "90ms" }}
             >
               Hi, I&apos;m {profile.nickname}. Welcome to my website.
             </h1>
 
             <div
-              className="reveal-group-item mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.012em] text-foreground-60 md:mt-12 md:text-[1.18rem] md:leading-9"
+              className="reveal-group-item mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.01em] text-foreground-70 md:mt-12 md:text-[1.18rem] md:leading-9"
               style={{ transitionDelay: "180ms" }}
             >
               <p>I love working with AI — and working on it.</p>

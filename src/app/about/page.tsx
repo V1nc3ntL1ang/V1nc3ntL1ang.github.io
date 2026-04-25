@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import { OpenEndedCurvedRunner } from "@/components/open-ended-curved-runner";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";
 
@@ -30,8 +31,9 @@ const aboutHeroCopy = (
 type InterestVisualStyle = "ambient" | "quiet" | "etched";
 type VisibleFocusArea = (typeof visibleFocusAreas)[number];
 
-const OPEN_ENDED_INFINITY_PATH =
-  "M104 82 C80 92 80 128 104 138 C123.5 146.5 143.5 133 160 110 C176.5 87 196.5 73.5 216 82 C240 92 240 128 216 138 C196.5 146.5 176.5 133 160 110 C143.5 87 123.5 73.5 104 82 Z";
+const OPEN_ENDED_INFINITY_LOOP =
+  "C80 92 80 128 104 138 C123.5 146.5 143.5 133 160 110 C176.5 87 196.5 73.5 216 82 C240 92 240 128 216 138 C196.5 146.5 176.5 133 160 110 C143.5 87 123.5 73.5 104 82";
+const OPEN_ENDED_INFINITY_PATH = `M104 82 ${OPEN_ENDED_INFINITY_LOOP} Z`;
 
 function SignalPath({
   className = "",
@@ -48,17 +50,6 @@ function SignalPath({
       <path className={lineClassName} d={d} />
       <path className={runnerClassName} d={d} pathLength={1} />
     </>
-  );
-}
-
-function OpenEndedMotionRunner() {
-  return (
-    <path
-      className="open-ended-reference-runner"
-      d={OPEN_ENDED_INFINITY_PATH}
-      fill="none"
-      pathLength={1}
-    />
   );
 }
 
@@ -97,7 +88,7 @@ function InterestVisual({
             transform="translate(160 110) scale(1.08) translate(-160 -110)"
           >
             <path className="open-ended-reference-edge" d={OPEN_ENDED_INFINITY_PATH} fill="none" />
-            <OpenEndedMotionRunner />
+            <OpenEndedCurvedRunner d={OPEN_ENDED_INFINITY_PATH} />
           </g>
         ) : (
           <g className="interest-verb-mark">

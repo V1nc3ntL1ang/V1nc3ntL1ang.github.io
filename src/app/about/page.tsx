@@ -30,6 +30,9 @@ const aboutHeroCopy = (
 type InterestVisualStyle = "ambient" | "quiet" | "etched";
 type VisibleFocusArea = (typeof visibleFocusAreas)[number];
 
+const OPEN_ENDED_INFINITY_PATH =
+  "M104 82 C80 92 80 128 104 138 C123.5 146.5 143.5 133 160 110 C176.5 87 196.5 73.5 216 82 C240 92 240 128 216 138 C196.5 146.5 176.5 133 160 110 C143.5 87 123.5 73.5 104 82 Z";
+
 function SignalPath({
   className = "",
   d,
@@ -48,16 +51,15 @@ function SignalPath({
   );
 }
 
-function SignalLoop({
-  className = "",
-  d,
-}: {
-  className?: string;
-  d: string;
-}) {
-  const runnerClassName = `interest-loop-runner${className ? ` ${className}` : ""}`;
-
-  return <path className={runnerClassName} d={d} pathLength={1} />;
+function OpenEndedMotionRunner() {
+  return (
+    <path
+      className="open-ended-reference-runner"
+      d={OPEN_ENDED_INFINITY_PATH}
+      fill="none"
+      pathLength={1}
+    />
+  );
 }
 
 function InterestVisual({
@@ -90,13 +92,12 @@ function InterestVisual({
             <circle className="interest-node interest-node-small" cx="160" cy="110" r="4" />
           </g>
         ) : index === 1 ? (
-          <g className="interest-verb-mark">
-            <rect className="interest-shape" x="104" y="86" width="112" height="52" rx="26" />
-            <rect className="interest-shape interest-shape-soft" x="121" y="70" width="112" height="52" rx="26" />
-            <rect className="interest-shape interest-shape-faint" x="87" y="102" width="112" height="52" rx="26" />
-            <SignalLoop className="interest-runner-phase-2" d="M130 86 H190 C204.4 86 216 97.6 216 112 C216 126.4 204.4 138 190 138 H130 C115.6 138 104 126.4 104 112 C104 97.6 115.6 86 130 86 Z" />
-            <SignalLoop className="interest-line-soft interest-runner-phase-4" d="M147 70 H207 C221.4 70 233 81.6 233 96 C233 110.4 221.4 122 207 122 H147 C132.6 122 121 110.4 121 96 C121 81.6 132.6 70 147 70 Z" />
-            <SignalLoop className="interest-line-faint interest-runner-phase-1" d="M113 102 H173 C187.4 102 199 113.6 199 128 C199 142.4 187.4 154 173 154 H113 C98.6 154 87 142.4 87 128 C87 113.6 98.6 102 113 102 Z" />
+          <g
+            className="interest-verb-mark open-ended-reference-mark"
+            transform="translate(160 110) scale(1.08) translate(-160 -110)"
+          >
+            <path className="open-ended-reference-edge" d={OPEN_ENDED_INFINITY_PATH} fill="none" />
+            <OpenEndedMotionRunner />
           </g>
         ) : (
           <g className="interest-verb-mark">

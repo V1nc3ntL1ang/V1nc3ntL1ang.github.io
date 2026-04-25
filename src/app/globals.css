@@ -105,6 +105,18 @@ a {
   }
 }
 
+@keyframes reveal-interest-card {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translate3d(0, 24px, 0) scale(0.988);
@@ -131,6 +143,16 @@ a {
 
 .reveal-group-visible .reveal-group-item-lite {
   animation: reveal-up-lite 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-group-item-card {
+  backface-visibility: hidden;
+  transform: translate3d(0, 18px, 0) scale(0.992);
+  transform-origin: 50% 65%;
+}
+
+.reveal-group-visible .reveal-group-item-card {
+  animation: reveal-interest-card 0.82s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .site-shell {
@@ -1094,6 +1116,14 @@ section[id],
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group-item,
+  .reveal-group-item-card {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
   .interest-visual::before,
   .interest-card-motion-pastel .interest-visual,
   .interest-card-motion-pastel .interest-visual::before,

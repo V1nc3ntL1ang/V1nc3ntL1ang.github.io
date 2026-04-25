@@ -268,8 +268,8 @@ export default function AboutPage() {
             {visibleFocusAreas.map((item, index) => (
               <article
                 key={`interest-final-${item.title}`}
-                className="interest-card interest-card-ambient interest-card-art interest-card-motion-window interest-card-motion-signal"
-                style={{ transitionDelay: `${140 + index * 90}ms` }}
+                className="reveal-group-item reveal-group-item-card interest-card interest-card-ambient interest-card-art interest-card-motion-window interest-card-motion-signal"
+                style={{ animationDelay: `${140 + index * 90}ms` }}
               >
                 <InterestVisual index={index} style="ambient" />
                 <InterestCopy item={item} index={index} />

@@ -6,11 +6,11 @@ import { profile } from "@/lib/site-content";
 export default function Home() {
   return (
     <section className="accent-wash">
-      <div className="site-shell flex min-h-[calc(100svh-var(--header-h))] items-center py-16 md:py-24">
+      <div className="site-shell home-hero-shell flex min-h-[calc(100svh-var(--header-h))] items-center py-16 md:py-24">
         <RevealGroup
           mode="load"
           as="div"
-          className="mx-auto grid w-full max-w-[77rem] gap-12 md:grid-cols-[minmax(0,0.98fr)_minmax(18rem,0.62fr)] md:items-center md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.62fr)] lg:gap-14"
+          className="home-hero-grid mx-auto grid w-full max-w-[77rem] gap-12 md:grid-cols-[minmax(0,0.98fr)_minmax(18rem,0.62fr)] md:items-center md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.62fr)] lg:gap-14"
         >
           <div className="max-w-[44rem]">
             <p
@@ -21,14 +21,14 @@ export default function Home() {
             </p>
 
             <h1
-              className="reveal-group-item mt-5 max-w-[14ch] text-[clamp(3rem,7.8vw,5.9rem)] leading-[0.93] tracking-[-0.048em] font-medium text-foreground"
+              className="reveal-group-item home-hero-title mt-5 max-w-[14ch] text-[clamp(3rem,7.8vw,5.9rem)] leading-[0.93] tracking-[-0.048em] font-medium text-foreground"
               style={{ transitionDelay: "90ms" }}
             >
               Hi, I&apos;m {profile.nickname}. Welcome to my website.
             </h1>
 
             <div
-              className="reveal-group-item mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.01em] text-foreground-70 md:mt-12 md:text-[1.18rem] md:leading-9"
+              className="reveal-group-item home-hero-copy mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.01em] text-foreground-70 md:mt-12 md:text-[1.18rem] md:leading-9"
               style={{ transitionDelay: "180ms" }}
             >
               <p>I love working with AI — and working on it.</p>
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
 
             <div
-              className="reveal-group-item mt-10 md:mt-12"
+              className="reveal-group-item home-hero-action mt-10 md:mt-12"
               style={{ transitionDelay: "260ms" }}
             >
               <Link href="/about" className="home-learn-link">
@@ -97,7 +97,7 @@ export default function Home() {
                 width={512}
                 height={512}
                 priority
-                className="relative block aspect-square w-full max-w-[18rem] rounded-[2.1rem] object-cover ring-1 ring-white/7 shadow-[0_28px_90px_rgba(0,0,0,0.34)] lg:max-w-[20rem] lg:rounded-[2.35rem]"
+                className="home-hero-avatar relative block aspect-square w-full max-w-[18rem] rounded-[2.1rem] object-cover ring-1 ring-white/7 shadow-[0_28px_90px_rgba(0,0,0,0.34)] lg:max-w-[20rem] lg:rounded-[2.35rem]"
               />
             </div>
           </div>

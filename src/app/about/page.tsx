@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { OpenEndedCurvedRunner } from "@/components/open-ended-curved-runner";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";

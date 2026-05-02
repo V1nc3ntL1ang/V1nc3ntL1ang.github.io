@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { profile } from "@/lib/site-content";
 import { ClustrmapsWidget } from "@/components/clustrmaps-widget";
 
@@ -54,13 +54,16 @@ export function SiteFooter() {
     <footer className="site-shell mt-8 border-t border-border-subtle py-8 md:py-10">
       <div className="grid gap-8 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center">
         <div className="flex items-center gap-3">
-          {footerLinks.map((item) =>
-            item.external ? (
+          {footerLinks.map((item) => {
+            const isExternal = item.external === true;
+            const isNativeLink = isExternal || item.href.startsWith("mailto:");
+
+            return isNativeLink ? (
               <a
                 key={item.label}
                 href={item.href}
-                target="_blank"
-                rel="noreferrer"
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
                 aria-label={item.label}
                 className="footer-icon-link"
               >
@@ -75,8 +78,8 @@ export function SiteFooter() {
               >
                 {item.icon}
               </Link>
-            ),
-          )}
+            );
+          })}
         </div>
 
         <div className="text-sm leading-7 text-foreground-60 md:justify-self-center">

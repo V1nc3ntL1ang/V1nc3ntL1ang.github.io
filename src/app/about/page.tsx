@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { GitHubIcon, MailIcon } from "@/components/contact-icons";
 import { OpenEndedCurvedRunner } from "@/components/open-ended-curved-runner";
 import { Reveal, RevealGroup } from "@/components/reveal";
 import { education, focusAreas, profile } from "@/lib/site-content";
@@ -30,47 +31,6 @@ const aboutHeroCopy = (
 
 type InterestVisualStyle = "ambient" | "quiet" | "etched";
 type VisibleFocusArea = (typeof visibleFocusAreas)[number];
-
-function GitHubIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      width="18"
-      height="18"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M12 .5C5.649.5.5 5.649.5 12a11.5 11.5 0 0 0 7.864 10.912c.575.107.786-.25.786-.556 0-.274-.01-1-.016-1.962-3.2.696-3.877-1.542-3.877-1.542-.523-1.328-1.277-1.682-1.277-1.682-1.044-.713.079-.698.079-.698 1.155.081 1.763 1.186 1.763 1.186 1.026 1.759 2.692 1.251 3.348.956.104-.743.402-1.251.731-1.539-2.554-.29-5.24-1.277-5.24-5.684 0-1.255.448-2.282 1.183-3.086-.119-.29-.513-1.459.112-3.042 0 0 .965-.309 3.162 1.179a10.95 10.95 0 0 1 5.758 0c2.195-1.488 3.159-1.179 3.159-1.179.627 1.583.233 2.752.114 3.042.737.804 1.181 1.831 1.181 3.086 0 4.418-2.69 5.391-5.254 5.675.413.356.781 1.058.781 2.133 0 1.54-.014 2.782-.014 3.161 0 .309.207.669.791.555A11.502 11.502 0 0 0 23.5 12C23.5 5.649 18.351.5 12 .5Z" />
-    </svg>
-  );
-}
-
-function MailIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      width="18"
-      height="18"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 6.5h16c.552 0 1 .448 1 1v9c0 .552-.448 1-1 1H4c-.552 0-1-.448-1-1v-9c0-.552.448-1 1-1Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-      <path
-        d="m4 8 8 5 8-5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 const OPEN_ENDED_INFINITY_LOOP =
   "C80 92 80 128 104 138 C123.5 146.5 143.5 133 160 110 C176.5 87 196.5 73.5 216 82 C240 92 240 128 216 138 C196.5 146.5 176.5 133 160 110 C143.5 87 123.5 73.5 104 82";

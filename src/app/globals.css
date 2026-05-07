@@ -2905,6 +2905,12 @@ section[id],
   }
 }
 
+.footer-icon-options {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .footer-icon-link {
   display: inline-flex;
   height: 2rem;
@@ -2912,15 +2918,12 @@ section[id],
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  color: var(--text-60);
-  transition:
-    color 0.2s linear,
-    transform 0.2s linear;
+  color: var(--text-80);
+  transition: color 0.2s linear;
 }
 
 .footer-icon-link:hover {
   color: var(--text);
-  transform: translateY(-1px);
 }
 
 .footer-clustrmaps {

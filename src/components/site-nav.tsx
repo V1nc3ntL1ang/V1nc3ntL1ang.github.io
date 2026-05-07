@@ -48,7 +48,7 @@ const navMenus = {
 const overviewSearchText =
   "Hi, I'm Vincent. Welcome to my website. I love working with AI \u2014 and working on it. I like building things with strong ideas and clean execution. I'm drawn to work that feels thoughtful, clear, and quietly confident. You can reach me by email. If you're interested, feel free to take a look at my GitHub.";
 const aboutOverviewSearchText =
-  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems. Letian Liang / Vincent. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
+  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on multi-agent systems, open-ended learning, and multimodal large language model systems. Letian “Vincent” Liang. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
 
 type SearchItem = {
   id: string;

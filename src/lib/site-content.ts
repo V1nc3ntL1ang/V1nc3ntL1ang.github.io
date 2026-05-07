@@ -6,6 +6,7 @@ type NavItem = {
 
 type Profile = {
   name: string;
+  displayName: string;
   nickname: string;
   email: string;
   github: string;
@@ -53,6 +54,7 @@ export const navItems: NavItem[] = [
 
 export const profile: Profile = {
   name: "Letian Liang",
+  displayName: "Letian “Vincent” Liang",
   nickname: "Vincent",
   email: "ftv1nc3ntl1ang@mail.scut.edu.cn",
   github: "https://github.com/V1nc3ntL1ang",

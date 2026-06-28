@@ -24,8 +24,8 @@ const aboutHeroCopy = (
         {"\u2197"}
       </span>
     </a>
-    . I&apos;m interested in artificial intelligence, especially multi-agent
-    systems, open-ended learning, and multimodal large language model systems.
+    . I&apos;m interested in artificial intelligence, especially agentic AI,
+    continual learning, and multimodal large language model systems.
   </>
 );
 

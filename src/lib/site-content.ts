@@ -63,15 +63,15 @@ export const profile: Profile = {
 export const focusAreas: FocusArea[] = [
   {
     eyebrow: "01",
-    title: "Multi-agent systems",
+    title: "Agentic AI",
     description:
-      "I am interested in systems where multiple agents coordinate, specialize, and interact to solve tasks that exceed the capacity of a single model.",
+      "I am interested in agentic AI systems where large language models plan, act, receive feedback, and iterate through interactions with environments to solve complex tasks beyond static prediction.",
   },
   {
     eyebrow: "02",
-    title: "Open-ended learning",
+    title: "Continual learning",
     description:
-      "I care about open-ended learning mechanisms, especially self-play, co-evolution, and self-evolution, through which agents improve by interacting with one another and generating new behaviors over time.",
+      "I care about continual learning mechanisms, especially self-distillation, self-evolution, and self-play, through which agents adapt to new tasks and environments over time by preserving useful knowledge, refining their behaviors, and learning from ongoing interaction.",
   },
   {
     eyebrow: "03",

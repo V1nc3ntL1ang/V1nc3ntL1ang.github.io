@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { GitHubIcon, MailIcon } from "@/components/contact-icons";
 import { profile } from "@/lib/site-content";
-import { ClustrmapsWidget } from "@/components/clustrmaps-widget";
+import { MapMyVisitorsWidget } from "@/components/mapmyvisitors-widget";
 
 function HomeIcon() {
   return (
@@ -44,8 +44,8 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="footer-clustrmaps justify-self-start md:justify-self-end">
-          <ClustrmapsWidget />
+        <div className="footer-mapmyvisitors justify-self-start md:justify-self-end">
+          <MapMyVisitorsWidget />
         </div>
       </div>
     </footer>

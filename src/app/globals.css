@@ -2926,26 +2926,19 @@ section[id],
   color: var(--text);
 }
 
-.footer-clustrmaps {
+.footer-mapmyvisitors {
   width: 300px;
   max-width: 100%;
 }
 
-.footer-clustrmaps .clustrmaps-widget {
+.footer-mapmyvisitors .mapmyvisitors-widget {
   width: 300px;
   max-width: 100%;
-  min-height: 147px;
+  min-height: 183px;
 }
 
-.footer-clustrmaps .clustrmaps-script-host {
+.footer-mapmyvisitors .mapmyvisitors-script-host {
   width: 300px;
   max-width: 100%;
   margin-inline: auto;
-}
-
-.footer-clustrmaps .clustrmaps-fallback-image {
-  display: block;
-  width: 300px;
-  max-width: 100%;
-  height: auto;
 }

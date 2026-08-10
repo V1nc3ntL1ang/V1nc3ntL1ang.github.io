@@ -7,7 +7,7 @@ import { education, focusAreas, navItems, profile } from "@/lib/site-content";
 
 const navMenus = {
   about: {
-    eyebrow: "Explore about",
+    eyebrow: "Explore About",
     primary: [
       { label: "Overview", href: "/about#overview" },
       { label: "Research Interests", href: "/about#research" },
@@ -48,7 +48,7 @@ const navMenus = {
 const overviewSearchText =
   "Hi, I'm Vincent. Welcome to my website. I love working with AI \u2014 and working on it. I like building things with strong ideas and clean execution. I'm drawn to work that feels thoughtful, clear, and quietly confident. You can reach me by email. If you're interested, feel free to take a look at my GitHub.";
 const aboutOverviewSearchText =
-  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on agentic AI, continual learning, and multimodal large language model systems. Letian “Vincent” Liang. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
+  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on agentic AI, recursive self-improvement, and multimodal large language models. Letian “Vincent” Liang. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
 
 type SearchItem = {
   id: string;
@@ -553,7 +553,7 @@ export function SiteNav() {
           </Link>
 
           <div className="flex min-w-0 flex-1 items-center">
-            <nav className="hidden h-full items-center lg:flex" aria-label="Primary navigation">
+            <nav className="hover-navigation h-full items-center" aria-label="Primary navigation">
               <ul className="flex h-full items-center">
                 {navItems
                   .filter((item) => !item.hidden)
@@ -585,7 +585,7 @@ export function SiteNav() {
               </ul>
             </nav>
 
-            <div className="ml-2 hidden lg:flex">
+            <div className="hover-navigation ml-2">
               <button
                 type="button"
                 aria-label="Open search"
@@ -607,7 +607,7 @@ export function SiteNav() {
               </button>
             </div>
 
-            <div className="ml-auto flex h-full items-center gap-1 lg:hidden">
+            <div className="direct-navigation ml-auto h-full items-center gap-1">
               <nav className="flex h-full items-center" aria-label="Mobile navigation">
                 <ul className="flex h-full items-center">
                   {navItems

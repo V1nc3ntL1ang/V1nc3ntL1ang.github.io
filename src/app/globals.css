@@ -458,6 +458,12 @@ section[id],
   font-size: clamp(1.62rem, 2.3vw, 1.95rem);
 }
 
+@media (max-width: 480px) {
+  .interest-card-art .interest-title {
+    font-size: 1.56rem;
+  }
+}
+
 .interest-card-ambient {
   border-color: rgba(255, 255, 255, 0.12);
   background:
@@ -492,7 +498,6 @@ section[id],
 
 .interest-title {
   min-height: 4.9rem;
-  max-width: 15rem;
   color: var(--text);
   font-size: clamp(1.75rem, 2.55vw, 2.15rem);
   font-weight: 500;
@@ -2580,6 +2585,24 @@ section[id],
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.2;
+}
+
+.hover-navigation {
+  display: none;
+}
+
+.direct-navigation {
+  display: flex;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .hover-navigation {
+    display: flex;
+  }
+
+  .direct-navigation {
+    display: none;
+  }
 }
 
 .nav-link {

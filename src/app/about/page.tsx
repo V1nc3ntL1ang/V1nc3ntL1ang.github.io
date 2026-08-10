@@ -25,7 +25,7 @@ const aboutHeroCopy = (
       </span>
     </a>
     . I&apos;m interested in artificial intelligence, especially agentic AI,
-    continual learning, and multimodal large language model systems.
+    recursive self-improvement, and multimodal large language models.
   </>
 );
 

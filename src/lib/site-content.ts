@@ -69,15 +69,15 @@ export const focusAreas: FocusArea[] = [
   },
   {
     eyebrow: "02",
-    title: "Continual learning",
+    title: "Recursive Self-Improvement",
     description:
-      "I care about continual learning mechanisms, especially self-distillation, self-evolution, and self-play, through which agents adapt to new tasks and environments over time by preserving useful knowledge, refining their behaviors, and learning from ongoing interaction.",
+      "I care about recursive self-improvement (RSI), where agents generate feedback from their own interactions, evaluate the outcomes of their actions, and use these signals to iteratively refine their reasoning, behavior, and capabilities over time.",
   },
   {
     eyebrow: "03",
-    title: "Multimodal language model systems",
+    title: "Multimodal Large Language Models",
     description:
-      "I am interested in multimodal language model systems that can reason more effectively and reliably across text, vision, and audio.",
+      "I am interested in multimodal large language models (MLLMs) that can integrate information and reason effectively and reliably across text, vision, and audio.",
   },
 ];
 

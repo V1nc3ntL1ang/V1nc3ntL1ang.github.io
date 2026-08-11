@@ -162,13 +162,22 @@ export function PublicationToolbar({
           inert={!isSortOpen}
           aria-hidden={!isSortOpen}
           style={{
+            opacity: isSortOpen ? 1 : 0,
             transform: isSortOpen
-              ? "translate3d(0, 0, 0)"
-              : "translate3d(0, -3px, 0)",
-            transitionDuration: "80ms",
+              ? "translate3d(0, 0, 0) scale(1)"
+              : "translate3d(0, -4px, 0) scale(0.985)",
+            transformOrigin: "top right",
+            visibility: isSortOpen ? "visible" : "hidden",
+            transitionProperty: "opacity, transform, visibility",
+            transitionDuration: "160ms, 160ms, 0ms",
+            transitionTimingFunction:
+              "cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), linear",
+            transitionDelay: isSortOpen
+              ? "0ms, 0ms, 0ms"
+              : "0ms, 0ms, 160ms",
           }}
-          className={`absolute top-full right-0 z-30 w-72 pt-2 transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transform-none motion-reduce:transition-none ${
-            isSortOpen ? "visible" : "invisible pointer-events-none"
+          className={`absolute top-full right-0 z-30 w-72 pt-2 will-change-[opacity,transform] motion-reduce:transform-none motion-reduce:!transition-none ${
+            isSortOpen ? "" : "pointer-events-none"
           }`}
         >
           <fieldset className="rounded-xl border border-white/[0.08] bg-[#202020] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.38)]">

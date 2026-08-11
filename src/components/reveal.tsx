@@ -85,7 +85,7 @@ export function Reveal({
 
   const mergedStyle: CSSProperties = {
     ...style,
-    transitionDelay: `${delay}ms`,
+    animationDelay: `${delay}ms`,
   };
 
   return (

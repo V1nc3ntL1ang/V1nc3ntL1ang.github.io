@@ -38,9 +38,13 @@ export function SiteFooter() {
         </div>
 
         <div className="text-sm leading-7 text-foreground-60 md:justify-self-center">
-          <p>
-            <span className="text-foreground">&copy; 2026 Letian Liang.</span>
-            <span className="ms-3">Last updated: March 2026</span>
+          <p className="flex flex-wrap gap-x-3">
+            <span className="whitespace-nowrap text-foreground">
+              &copy; 2026 Letian Liang.
+            </span>
+            <span className="whitespace-nowrap">
+              Last updated: August 2026
+            </span>
           </p>
         </div>
 

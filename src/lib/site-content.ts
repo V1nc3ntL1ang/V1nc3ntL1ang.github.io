@@ -1,3 +1,5 @@
+import { publicationsVisible } from "@/lib/publications";
+
 type NavItem = {
   href: string;
   label: string;
@@ -35,21 +37,13 @@ type EducationEntry = {
   hidden?: boolean;
 };
 
-type Project = {
-  slug: string;
-  title: string;
-  year: string;
-  status: string;
-  featured: boolean;
-  hidden?: boolean;
-  tags: string[];
-  summary: string;
-  note: string;
-};
-
 export const navItems: NavItem[] = [
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects", hidden: true },
+  {
+    href: "/publications",
+    label: "Publications",
+    hidden: !publicationsVisible,
+  },
 ];
 
 export const profile: Profile = {
@@ -129,56 +123,5 @@ export const education: EducationEntry[] = [
       overlayClassName:
         "bg-[linear-gradient(180deg,rgba(92,118,156,0.06),rgba(8,10,16,0.18))]",
     },
-  },
-];
-
-export const projects: Project[] = [
-  {
-    slug: "agent-lab",
-    title: "Agent Lab Notes",
-    year: "2026",
-    status: "Selected",
-    featured: true,
-    hidden: false,
-    tags: ["Agents", "Research", "Prototype"],
-    summary:
-      "A placeholder for your most representative project or research thread. This card is here so the page structure starts strong before the real content is finalized.",
-    note: "Editable sample",
-  },
-  {
-    slug: "scheduler-sandbox",
-    title: "Scheduler Sandbox",
-    year: "2026",
-    status: "Draft",
-    featured: true,
-    hidden: false,
-    tags: ["RL", "Optimization", "Systems"],
-    summary:
-      "A second project slot for experiments around resource allocation, planning, or adaptive scheduling. The tone is technical but still readable to a broad audience.",
-    note: "Good for system work",
-  },
-  {
-    slug: "personal-site-system",
-    title: "Personal Site System",
-    year: "2026",
-    status: "Live prototype",
-    featured: true,
-    hidden: false,
-    tags: ["Design", "Next.js", "Content"],
-    summary:
-      "The site itself can become a project entry: a reusable personal publishing system that lets you hide sections, grow pages, and keep the visual language coherent.",
-    note: "Can stay public",
-  },
-  {
-    slug: "future-hidden-slot",
-    title: "Future Hidden Slot",
-    year: "2026",
-    status: "Hidden",
-    featured: false,
-    hidden: true,
-    tags: ["Hidden"],
-    summary:
-      "This item will not render because hidden is true. It is here to prove the content model already supports draft entries.",
-    note: "Hidden example",
   },
 ];

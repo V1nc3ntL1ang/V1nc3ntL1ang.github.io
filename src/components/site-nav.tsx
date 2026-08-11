@@ -1,207 +1,29 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { education, focusAreas, navItems, profile } from "@/lib/site-content";
-
-const navMenus = {
-  about: {
-    eyebrow: "Explore About",
-    primary: [
-      { label: "Overview", href: "/about#overview" },
-      { label: "Research Interests", href: "/about#research" },
-      { label: "Education", href: "/about#education" },
-    ],
-    columns: [],
-  },
-  project: {
-    eyebrow: "Explore project",
-    primary: [
-      { label: "API platform", href: "/projects#overview" },
-      { label: "Codex", href: "/projects#personal-site-system" },
-      { label: "Agents", href: "/projects#agent-lab" },
-      { label: "Open models", href: "/projects#featured" },
-      { label: "Applications", href: "/projects#scheduler-sandbox" },
-    ],
-    columns: [
-      {
-        title: "Resources",
-        links: [
-          { label: "Documentation", href: "/projects#featured" },
-          { label: "Manual", href: "/projects#scheduler-sandbox" },
-          { label: "Community", href: "/projects#agent-lab" },
-        ],
-      },
-      {
-        title: "Highlights",
-        links: [
-          { label: "Research notes", href: "/projects#agent-lab" },
-          { label: "System prototype", href: "/projects#personal-site-system" },
-          { label: "Optimization", href: "/projects#scheduler-sandbox" },
-        ],
-      },
-    ],
-  },
-} as const;
-
-const overviewSearchText =
-  "Hi, I'm Vincent. Welcome to my website. I love working with AI \u2014 and working on it. I like building things with strong ideas and clean execution. I'm drawn to work that feels thoughtful, clear, and quietly confident. You can reach me by email. If you're interested, feel free to take a look at my GitHub.";
-const aboutOverviewSearchText =
-  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on agentic AI, recursive self-improvement, and multimodal large language models. Letian “Vincent” Liang. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
-
-type SearchItem = {
-  id: string;
-  section: string;
-  label: string;
-  description: string;
-  href: string;
-  content: string;
-  snippetSource?: string;
-};
-
-type SearchResult = SearchItem & {
-  rank: number;
-  snippet: string;
-};
-
-const searchItems: SearchItem[] = [
-  {
-    id: "home",
-    section: "Home",
-    label: "Home",
-    description: "Welcome page",
-    href: "/",
-    content: [
-      "home",
-      "welcome",
-      "vincent",
-      "website",
-      profile.email,
-      profile.github,
-      overviewSearchText,
-    ].join(" "),
-    snippetSource: overviewSearchText,
-  },
-  {
-    id: "about-overview",
-    section: "About / Overview",
-    label: "Overview",
-    description: "Profile, affiliation, and current direction",
-    href: "/about#overview",
-    content: [
-      "about overview profile scut vincent",
-      overviewSearchText,
-      aboutOverviewSearchText,
-      profile.name,
-      profile.nickname,
-      profile.email,
-      profile.github,
-    ].join(" "),
-    snippetSource: aboutOverviewSearchText,
-  },
-  ...focusAreas
-    .filter((item) => !item.hidden)
-    .map((item, index) => ({
-      id: `about-research-${index}`,
-      section: "About / Research interests",
-      label: item.title,
-      description: item.description,
-      href: "/about#research",
-      content: [
-        "research interests current interests about research",
-        item.eyebrow,
-        item.title,
-        item.description,
-      ].join(" "),
-      snippetSource: item.description,
-    })),
-  ...education
-    .filter((item) => !item.hidden)
-    .map((item, index) => ({
-      id: `about-education-${index}`,
-      section: "About / Academic background",
-      label: item.title,
-      description: item.subtitle,
-      href: "/about#education",
-      content: [
-        "education academic background",
-        item.title,
-        item.subtitle,
-        item.period,
-        item.location,
-        item.description,
-      ].join(" "),
-      snippetSource: `${item.subtitle}. ${item.description}`,
-    })),
-];
-
-function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function extractSnippet(source: string, query: string) {
-  const trimmedSource = source.replace(/\s+/g, " ").trim();
-  if (!trimmedSource) {
-    return "";
-  }
-
-  if (!query) {
-    return trimmedSource;
-  }
-
-  const lowerSource = trimmedSource.toLowerCase();
-  const lowerQuery = query.toLowerCase();
-  const matchIndex = lowerSource.indexOf(lowerQuery);
-
-  if (matchIndex === -1) {
-    return trimmedSource;
-  }
-
-  const start = Math.max(0, matchIndex - 40);
-  const end = Math.min(trimmedSource.length, matchIndex + query.length + 70);
-  const prefix = start > 0 ? "..." : "";
-  const suffix = end < trimmedSource.length ? "..." : "";
-
-  return `${prefix}${trimmedSource.slice(start, end).trim()}${suffix}`;
-}
-
-function highlightMatch(text: string, query: string) {
-  const normalized = query.trim().toLowerCase();
-  if (!normalized) {
-    return text;
-  }
-
-  const pattern = new RegExp(`(${escapeRegExp(query.trim())})`, "ig");
-  const segments = text.split(pattern);
-
-  return segments.map((segment, index) =>
-    segment.toLowerCase() === normalized ? (
-      <mark key={`${segment}-${index}`} className="nav-search-highlight">
-        {segment}
-      </mark>
-    ) : (
-      <span key={`${segment}-${index}`}>{segment}</span>
-    ),
-  );
-}
-
-type MenuKey = keyof typeof navMenus;
-type MenuSnapshot = {
-  key: MenuKey;
-  menu: (typeof navMenus)[MenuKey];
-};
-
-function getMenuSnapshot(key: MenuKey): MenuSnapshot {
-  return {
-    key,
-    menu: navMenus[key],
-  };
-}
+import {
+  buildSearchResults,
+  getMenuSnapshot,
+  type MenuKey,
+  type MenuSnapshot,
+} from "@/components/site-nav/site-nav-content";
+import {
+  NavMenuLayer,
+  SiteSearchPanel,
+} from "@/components/site-nav/site-nav-panels";
+import { navItems } from "@/lib/site-content";
 
 function SearchIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 16 16" fill="none">
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
       <path
         d="M13.8333 13.8333L10.7022 10.7022M10.7022 10.7022C11.607 9.79738 12.1667 8.54738 12.1667 7.16667C12.1667 4.40525 9.9281 2.16667 7.16667 2.16667C4.40525 2.16667 2.16667 4.40525 2.16667 7.16667C2.16667 9.9281 4.40525 12.1667 7.16667 12.1667C8.54738 12.1667 9.79738 11.607 10.7022 10.7022Z"
         stroke="currentColor"
@@ -213,17 +35,25 @@ function SearchIcon() {
   );
 }
 
+function menuKeyForHref(href: string): MenuKey {
+  if (href === "/about") return "about";
+  return "publication";
+}
+
 export function SiteNav() {
   const pathname = usePathname();
   const normalizedPathname = pathname.replace(/\/$/, "") || "/";
   const [openItem, setOpenItem] = useState<MenuKey | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeSnapshot, setActiveSnapshot] = useState<MenuSnapshot | null>(null);
-  const [exitingSnapshot, setExitingSnapshot] = useState<MenuSnapshot | null>(null);
+  const [activeSnapshot, setActiveSnapshot] =
+    useState<MenuSnapshot | null>(null);
+  const [exitingSnapshot, setExitingSnapshot] =
+    useState<MenuSnapshot | null>(null);
   const [isCrossfading, setIsCrossfading] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
-  const [activeContentNode, setActiveContentNode] = useState<HTMLDivElement | null>(null);
+  const [activeContentNode, setActiveContentNode] =
+    useState<HTMLDivElement | null>(null);
   const hoverOpenTimeoutRef = useRef<number | null>(null);
   const hoverCloseTimeoutRef = useRef<number | null>(null);
   const exitingTimeoutRef = useRef<number | null>(null);
@@ -233,59 +63,17 @@ export function SiteNav() {
 
   const isPanelOpen = openItem !== null;
   const panelHeight = isPanelOpen ? contentHeight : 0;
-  const normalizedQuery = searchQuery.trim().toLowerCase();
-  const filteredSearchItems: SearchResult[] = normalizedQuery
-    ? searchItems
-        .map((item) => {
-          const label = item.label.toLowerCase();
-          const description = item.description.toLowerCase();
-          const content = item.content.toLowerCase();
-
-          let rank = -1;
-          if (label.startsWith(normalizedQuery)) {
-            rank = 0;
-          } else if (label.includes(normalizedQuery)) {
-            rank = 1;
-          } else if (description.includes(normalizedQuery)) {
-            rank = 2;
-          } else if (content.includes(normalizedQuery)) {
-            rank = 3;
-          }
-
-          if (rank === -1) {
-            return null;
-          }
-
-          return {
-            ...item,
-            rank,
-            snippet: extractSnippet(item.snippetSource ?? item.description, normalizedQuery),
-          };
-        })
-        .filter((item): item is SearchResult => item !== null)
-        .sort((a, b) => {
-          if (a.rank !== b.rank) {
-            return a.rank - b.rank;
-          }
-
-          return a.label.localeCompare(b.label);
-        })
-    : searchItems.map((item) => ({
-        ...item,
-        rank: 0,
-        snippet: item.description,
-      }));
+  const searchResults = buildSearchResults(searchQuery);
 
   useEffect(() => {
     currentOpenItemRef.current = openItem;
   }, [openItem]);
 
-  const clearTimers = () => {
+  const clearHoverTimers = () => {
     if (hoverOpenTimeoutRef.current) {
       window.clearTimeout(hoverOpenTimeoutRef.current);
       hoverOpenTimeoutRef.current = null;
     }
-
     if (hoverCloseTimeoutRef.current) {
       window.clearTimeout(hoverCloseTimeoutRef.current);
       hoverCloseTimeoutRef.current = null;
@@ -316,7 +104,7 @@ export function SiteNav() {
   };
 
   const closeMenu = useCallback(() => {
-    clearTimers();
+    clearHoverTimers();
     clearExitTimer();
     setOpenItem(null);
     setExitingSnapshot(null);
@@ -336,25 +124,20 @@ export function SiteNav() {
 
   const scheduleOpen = (key: MenuKey) => {
     closeSearch();
-    clearTimers();
+    clearHoverTimers();
 
     if (openItem === null) {
       openMenu(key);
-      return;
+    } else if (openItem !== key) {
+      hoverOpenTimeoutRef.current = window.setTimeout(() => {
+        openMenu(key);
+        hoverOpenTimeoutRef.current = null;
+      }, 150);
     }
-
-    if (openItem === key) {
-      return;
-    }
-
-    hoverOpenTimeoutRef.current = window.setTimeout(() => {
-      openMenu(key);
-      hoverOpenTimeoutRef.current = null;
-    }, 150);
   };
 
   const scheduleClose = () => {
-    clearTimers();
+    clearHoverTimers();
     hoverCloseTimeoutRef.current = window.setTimeout(() => {
       closeMenu();
       hoverCloseTimeoutRef.current = null;
@@ -362,13 +145,13 @@ export function SiteNav() {
   };
 
   useEffect(() => {
-    if (!exitingSnapshot) {
-      return;
-    }
+    if (!exitingSnapshot) return;
 
     clearExitTimer();
     exitingTimeoutRef.current = window.setTimeout(() => {
-      setExitingSnapshot((current) => (current?.key === exitingSnapshot.key ? null : current));
+      setExitingSnapshot((current) =>
+        current?.key === exitingSnapshot.key ? null : current,
+      );
       setIsCrossfading(false);
       exitingTimeoutRef.current = null;
     }, 260);
@@ -377,22 +160,15 @@ export function SiteNav() {
   }, [exitingSnapshot]);
 
   useEffect(() => {
-    if (!activeContentNode) {
-      return;
-    }
+    if (!activeContentNode) return;
 
-    const frame = window.requestAnimationFrame(() => {
-      setContentHeight(activeContentNode.scrollHeight);
-    });
-
+    const updateHeight = () => setContentHeight(activeContentNode.scrollHeight);
+    const frame = window.requestAnimationFrame(updateHeight);
     if (typeof ResizeObserver === "undefined") {
       return () => window.cancelAnimationFrame(frame);
     }
 
-    const observer = new ResizeObserver(() => {
-      setContentHeight(activeContentNode.scrollHeight);
-    });
-
+    const observer = new ResizeObserver(updateHeight);
     observer.observe(activeContentNode);
     return () => {
       window.cancelAnimationFrame(frame);
@@ -400,14 +176,17 @@ export function SiteNav() {
     };
   }, [activeContentNode]);
 
-  useEffect(() => () => {
-    clearTimers();
-    clearExitTimer();
-  }, []);
+  useEffect(
+    () => () => {
+      clearHoverTimers();
+      clearExitTimer();
+    },
+    [],
+  );
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      clearTimers();
+      clearHoverTimers();
       clearExitTimer();
       setOpenItem(null);
       setExitingSnapshot(null);
@@ -420,38 +199,29 @@ export function SiteNav() {
   }, [pathname]);
 
   useEffect(() => {
-    if (!searchOpen) {
-      return;
-    }
-
+    if (!searchOpen) return;
     const frame = window.requestAnimationFrame(() => {
       searchInputRef.current?.focus();
     });
-
     return () => window.cancelAnimationFrame(frame);
-  }, [closeMenu, closeSearch, openSearch, searchOpen]);
+  }, [searchOpen]);
 
   useEffect(() => {
-    if (!searchOpen) {
-      return;
-    }
+    if (!searchOpen) return;
 
     const preventBackgroundScroll = (event: WheelEvent | TouchEvent) => {
       const target = event.target;
-      if (!(target instanceof Node)) {
-        return;
+      if (target instanceof Node && !searchResultsRef.current?.contains(target)) {
+        event.preventDefault();
       }
-
-      if (searchResultsRef.current?.contains(target)) {
-        return;
-      }
-
-      event.preventDefault();
     };
 
-    document.addEventListener("wheel", preventBackgroundScroll, { passive: false });
-    document.addEventListener("touchmove", preventBackgroundScroll, { passive: false });
-
+    document.addEventListener("wheel", preventBackgroundScroll, {
+      passive: false,
+    });
+    document.addEventListener("touchmove", preventBackgroundScroll, {
+      passive: false,
+    });
     return () => {
       document.removeEventListener("wheel", preventBackgroundScroll);
       document.removeEventListener("touchmove", preventBackgroundScroll);
@@ -465,15 +235,11 @@ export function SiteNav() {
         target instanceof HTMLInputElement ||
         target instanceof HTMLTextAreaElement ||
         target?.isContentEditable;
-      const isSearchInputTarget = target === searchInputRef.current;
 
       if (event.key === "Escape") {
         closeMenu();
         closeSearch();
-        return;
-      }
-
-      if (!searchOpen && (!isTypingField || isSearchInputTarget) && event.key === "/") {
+      } else if (!searchOpen && !isTypingField && event.key === "/") {
         event.preventDefault();
         openSearch();
       }
@@ -483,66 +249,10 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [closeMenu, closeSearch, openSearch, searchOpen]);
 
-  const renderMenuLayer = (
-    snapshot: MenuSnapshot,
-    options?: {
-      className?: string;
-      attachMeasurementRef?: boolean;
-      isInteractive?: boolean;
-    },
-  ) => (
-    <div
-      ref={options?.attachMeasurementRef ? setActiveContentNode : undefined}
-      className={`nav-menu-layer site-shell flex items-start gap-20 py-10 ${options?.className ?? ""}`}
-      aria-hidden={options?.isInteractive === false ? "true" : undefined}
-    >
-      <section className="w-fit shrink-0 space-y-4">
-        <h2 className="nav-group-title">{snapshot.menu.eyebrow}</h2>
-        <ul className="space-y-4">
-          {snapshot.menu.primary.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="nav-primary-link"
-                tabIndex={options?.isInteractive === false ? -1 : undefined}
-                onClick={closeMenu}
-              >
-                <span>{link.label}</span>
-                <span aria-hidden="true" className="nav-link-arrow">
-                  {"\u2197"}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <div className="flex flex-wrap items-start gap-16">
-        {snapshot.menu.columns.map((column) => (
-          <section key={column.title} className="space-y-4">
-            <h2 className="nav-group-title">{column.title}</h2>
-            <ul className="space-y-3">
-              {column.links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="nav-secondary-link"
-                    tabIndex={options?.isInteractive === false ? -1 : undefined}
-                    onClick={closeMenu}
-                  >
-                    <span>{link.label}</span>
-                    <span aria-hidden="true" className="nav-link-arrow">
-                      {"\u2197"}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-    </div>
-  );
+  const toggleSearch = () => {
+    if (searchOpen) closeSearch();
+    else openSearch();
+  };
 
   return (
     <div className="fixed inset-x-0 top-0 z-[51]">
@@ -553,19 +263,28 @@ export function SiteNav() {
           </Link>
 
           <div className="flex min-w-0 flex-1 items-center">
-            <nav className="hover-navigation h-full items-center" aria-label="Primary navigation">
+            <nav
+              className="hover-navigation h-full items-center"
+              aria-label="Primary navigation"
+            >
               <ul className="flex h-full items-center">
                 {navItems
                   .filter((item) => !item.hidden)
                   .map((item) => {
-                    const key = item.href === "/about" ? "about" : "project";
+                    const key = menuKeyForHref(item.href);
+                    const normalizedHref = item.href.replace(/\/$/, "") || "/";
+                    const isCurrent = normalizedPathname === normalizedHref;
                     const isOpen = openItem === key;
                     const isDimmed = openItem !== null && openItem !== key;
 
                     return (
-                      <li key={item.href} className="relative flex h-full items-center">
+                      <li
+                        key={item.href}
+                        className="relative flex h-full items-center"
+                      >
                         <Link
                           href={item.href}
+                          aria-current={isCurrent ? "page" : undefined}
                           onClick={closeMenu}
                           onMouseEnter={() => scheduleOpen(key)}
                           onFocus={() => openMenu(key)}
@@ -577,7 +296,9 @@ export function SiteNav() {
                                 : "nav-link-default"
                           }`}
                         >
-                          <span className="inline-flex items-center py-0 leading-none">{item.label}</span>
+                          <span className="inline-flex items-center py-0 leading-none">
+                            {item.label}
+                          </span>
                         </Link>
                       </li>
                     );
@@ -588,32 +309,29 @@ export function SiteNav() {
             <div className="hover-navigation ml-2">
               <button
                 type="button"
-                aria-label="Open search"
+                aria-label={searchOpen ? "Close search" : "Open search"}
                 aria-expanded={searchOpen}
                 aria-controls="site-search-panel"
                 className="nav-icon-button"
                 onMouseEnter={closeMenu}
                 onFocus={closeMenu}
-                onClick={() => {
-                  if (searchOpen) {
-                    closeSearch();
-                    return;
-                  }
-
-                  openSearch();
-                }}
+                onClick={toggleSearch}
               >
                 <SearchIcon />
               </button>
             </div>
 
             <div className="direct-navigation ml-auto h-full items-center gap-1">
-              <nav className="flex h-full items-center" aria-label="Mobile navigation">
+              <nav
+                className="flex h-full items-center"
+                aria-label="Mobile navigation"
+              >
                 <ul className="flex h-full items-center">
                   {navItems
                     .filter((item) => !item.hidden)
                     .map((item) => {
-                      const normalizedHref = item.href.replace(/\/$/, "") || "/";
+                      const normalizedHref =
+                        item.href.replace(/\/$/, "") || "/";
                       const isCurrent = normalizedPathname === normalizedHref;
 
                       return (
@@ -637,29 +355,21 @@ export function SiteNav() {
 
               <button
                 type="button"
-                aria-label="Open search"
+                aria-label={searchOpen ? "Close search" : "Open search"}
                 aria-expanded={searchOpen}
                 aria-controls="site-search-panel"
                 className="nav-icon-button"
-                onClick={() => {
-                  if (searchOpen) {
-                    closeSearch();
-                    return;
-                  }
-
-                  openSearch();
-                }}
+                onClick={toggleSearch}
               >
                 <SearchIcon />
               </button>
             </div>
           </div>
-
         </div>
       </header>
 
       <div
-        className={`nav-overlay fixed inset-x-0 bottom-0 top-16 z-50 bg-primary-12/90 backdrop-blur-lg ${
+        className={`nav-overlay fixed inset-x-0 top-16 bottom-0 z-50 bg-primary-12/90 backdrop-blur-lg ${
           isPanelOpen || searchOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
@@ -672,102 +382,46 @@ export function SiteNav() {
       />
 
       <div
-        aria-hidden={isPanelOpen ? "false" : "true"}
+        inert={!isPanelOpen}
+        aria-hidden={!isPanelOpen}
         className={`nav-panel fixed inset-x-0 top-16 z-[51] overflow-hidden bg-background/98 ${
-          isPanelOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          isPanelOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
         style={{ height: `${panelHeight}px` }}
-        onMouseEnter={clearTimers}
+        onMouseEnter={clearHoverTimers}
         onMouseLeave={scheduleClose}
       >
         <div className="relative">
-          {activeSnapshot
-            ? renderMenuLayer(activeSnapshot, {
-                attachMeasurementRef: true,
-                className: isCrossfading ? "nav-menu-content-enter" : "",
-              })
-            : null}
-
-          {exitingSnapshot
-            ? renderMenuLayer(exitingSnapshot, {
-                className: "nav-menu-content-exit absolute inset-0 z-10",
-                isInteractive: false,
-              })
-            : null}
+          {activeSnapshot ? (
+            <NavMenuLayer
+              snapshot={activeSnapshot}
+              measurementRef={setActiveContentNode}
+              className={isCrossfading ? "nav-menu-content-enter" : ""}
+              onNavigate={closeMenu}
+            />
+          ) : null}
+          {exitingSnapshot ? (
+            <NavMenuLayer
+              snapshot={exitingSnapshot}
+              className="nav-menu-content-exit absolute inset-0 z-10"
+              isInteractive={false}
+              onNavigate={closeMenu}
+            />
+          ) : null}
         </div>
       </div>
 
-      <div
-        aria-hidden={searchOpen ? "false" : "true"}
-        className={`fixed inset-x-0 top-16 z-[52] ${
-          searchOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        } transition-opacity duration-200`}
-        onClick={() => {
-          closeSearch();
-        }}
-      >
-        <div className="site-shell py-6">
-          <div
-            id="site-search-panel"
-            className="nav-search-panel mx-auto max-w-[42rem]"
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            <div className="border-b border-border-subtle px-5 py-4">
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search the site"
-                className="nav-search-input"
-              />
-            </div>
-
-            <div
-              ref={searchResultsRef}
-              className="nav-search-results max-h-[22rem] overflow-y-auto p-3"
-            >
-              <div className="mb-2 flex items-center justify-between px-2">
-                <p className="nav-group-title">Search</p>
-                <p className="text-xs tracking-[0.02em] text-foreground-44">Press / to open, Esc to close</p>
-              </div>
-
-              <ul className="space-y-1">
-                {filteredSearchItems.length > 0 ? (
-                  filteredSearchItems.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href={item.href}
-                        className="nav-search-link"
-                        onClick={closeSearch}
-                      >
-                        <div>
-                          <p className="nav-search-meta">{item.section}</p>
-                          <p className="mt-1 text-[1rem] font-medium leading-6 text-foreground">
-                            {highlightMatch(item.label, normalizedQuery)}
-                          </p>
-                          <p className="mt-1 text-sm leading-6 text-foreground-60">
-                            {highlightMatch(item.snippet, normalizedQuery)}
-                          </p>
-                        </div>
-                        <span aria-hidden="true" className="nav-search-link-arrow">
-                          {"\u2197"}
-                        </span>
-                      </Link>
-                    </li>
-                  ))
-                ) : (
-                  <li className="px-2 py-4 text-sm leading-6 text-foreground-44">
-                    No results found.
-                  </li>
-                )}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <SiteSearchPanel
+        open={searchOpen}
+        query={searchQuery}
+        results={searchResults}
+        inputRef={searchInputRef}
+        resultsRef={searchResultsRef}
+        onQueryChange={setSearchQuery}
+        onClose={closeSearch}
+      />
     </div>
   );
 }

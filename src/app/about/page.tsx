@@ -141,7 +141,7 @@ export default function AboutPage() {
         >
           <div
             className="reveal-group-item max-w-4xl"
-            style={{ transitionDelay: "40ms" }}
+            style={{ animationDelay: "40ms" }}
           >
             <p className="eyebrow">Overview</p>
             <h1 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
           <aside
             className="reveal-group-item card-surface rounded-[2rem] p-6 md:p-8"
-            style={{ transitionDelay: "180ms" }}
+            style={{ animationDelay: "180ms" }}
           >
             <p className="eyebrow">Facts & Contact</p>
             <div className="mt-6 divide-y divide-border-subtle">
@@ -251,7 +251,7 @@ export default function AboutPage() {
         <RevealGroup as="div">
           <div
             className="reveal-group-item mb-10 max-w-3xl"
-            style={{ transitionDelay: "40ms" }}
+            style={{ animationDelay: "40ms" }}
           >
             <p className="eyebrow">Research interests</p>
             <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
@@ -301,7 +301,7 @@ export default function AboutPage() {
               >
                 <div
                   className="reveal-group-item grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
-                  style={{ transitionDelay: `${120 + index * 110}ms` }}
+                  style={{ animationDelay: `${120 + index * 110}ms` }}
                 >
                   <div className="md:pt-1">
                     <p className="education-period">{item.period}</p>
@@ -338,7 +338,7 @@ export default function AboutPage() {
 
                 <div
                   className="reveal-group-item reveal-group-item-lite md:justify-self-end"
-                  style={{ transitionDelay: `${180 + index * 110}ms` }}
+                  style={{ animationDelay: `${180 + index * 110}ms` }}
                 >
                   <div className="relative aspect-[1.14/0.88] w-full overflow-hidden rounded-[1.45rem] bg-background-soft md:w-[15rem]">
                     <Image
@@ -348,7 +348,6 @@ export default function AboutPage() {
                       className="object-cover"
                       style={{ objectPosition: item.media.position }}
                       sizes="(max-width: 768px) 100vw, 288px"
-                      loading="eager"
                     />
                     <div
                       className={`absolute inset-0 ${item.media.overlayClassName}`}

@@ -27,16 +27,15 @@ export function OpenEndedCurvedRunner({
     }
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    if (reduceMotion.matches) {
-      return;
-    }
-
     const totalLength = referencePath.getTotalLength();
     const segmentLength = totalLength * segmentRatio;
     const samples = Math.max(2, Math.round(sampleCount));
     let animationFrame = 0;
-    let startTime: number | null = null;
+    let elapsed = 0;
+    let previousTimestamp: number | null = null;
+    let isIntersecting = false;
+    let isDocumentVisible = !document.hidden;
+    let prefersReducedMotion = reduceMotion.matches;
 
     const buildSegmentPath = (startLength: number) => {
       const commands: string[] = [];
@@ -54,21 +53,70 @@ export function OpenEndedCurvedRunner({
     };
 
     const animate = (timestamp: number) => {
-      if (startTime === null) {
-        startTime = timestamp;
+      if (previousTimestamp !== null) {
+        elapsed += timestamp - previousTimestamp;
       }
 
-      const elapsed = timestamp - startTime;
+      previousTimestamp = timestamp;
       const cycleProgress = (elapsed % durationMs) / durationMs;
       runnerPath.setAttribute("d", buildSegmentPath(cycleProgress * totalLength));
       animationFrame = window.requestAnimationFrame(animate);
     };
 
+    const stopAnimation = () => {
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      }
+      previousTimestamp = null;
+    };
+
+    const updateAnimationState = () => {
+      const shouldAnimate =
+        isIntersecting && isDocumentVisible && !prefersReducedMotion;
+
+      if (shouldAnimate && !animationFrame) {
+        animationFrame = window.requestAnimationFrame(animate);
+      } else if (!shouldAnimate) {
+        stopAnimation();
+      }
+    };
+
+    const visibilityTarget = referencePath.ownerSVGElement ?? referencePath;
+    const observer =
+      typeof IntersectionObserver === "undefined"
+        ? null
+        : new IntersectionObserver(([entry]) => {
+            isIntersecting = entry.isIntersecting;
+            updateAnimationState();
+          });
+
+    if (observer) {
+      observer.observe(visibilityTarget);
+    } else {
+      isIntersecting = true;
+    }
+
+    const handleVisibilityChange = () => {
+      isDocumentVisible = !document.hidden;
+      updateAnimationState();
+    };
+
+    const handleReducedMotionChange = (event: MediaQueryListEvent) => {
+      prefersReducedMotion = event.matches;
+      updateAnimationState();
+    };
+
     runnerPath.setAttribute("d", buildSegmentPath(0));
-    animationFrame = window.requestAnimationFrame(animate);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    reduceMotion.addEventListener("change", handleReducedMotionChange);
+    updateAnimationState();
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
+      observer?.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      reduceMotion.removeEventListener("change", handleReducedMotionChange);
+      stopAnimation();
     };
   }, [d, durationMs, sampleCount, segmentRatio]);
 

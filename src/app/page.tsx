@@ -6,7 +6,7 @@ import { profile } from "@/lib/site-content";
 
 export default function Home() {
   return (
-    <section className="accent-wash">
+    <section>
       <div className="site-shell home-hero-shell flex min-h-[calc(100svh-var(--header-h))] items-center py-16 md:py-24">
         <RevealGroup
           mode="load"
@@ -47,7 +47,6 @@ export default function Home() {
             style={{ animationDelay: "300ms" }}
           >
             <div className="relative md:-translate-y-2 lg:-translate-y-4">
-              <div className="pointer-events-none absolute inset-6 rounded-[2.2rem] bg-[radial-gradient(circle,rgba(255,255,255,0.07),transparent_70%)] blur-3xl opacity-60" />
               <Image
                 src="/home/vincent-dog-avatar.png"
                 alt="Vincent's dog avatar"

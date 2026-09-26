@@ -32,9 +32,9 @@ export const navMenus: Record<MenuKey, NavMenu> = {
 };
 
 const overviewSearchText =
-  "Hi, I'm Vincent. Welcome to my website. I love working with AI — and working on it. I like building things with strong ideas and clean execution. I'm drawn to work that feels thoughtful, clear, and quietly confident. You can reach me by email. If you're interested, feel free to take a look at my GitHub.";
+  "Hi, I'm Vincent. Welcome to my website. I love working with AI — and working on it.";
 const aboutOverviewSearchText =
-  "I study Data Science and Big Data Technology at South China University of Technology. My current interests center on agentic AI, recursive self-improvement, and multimodal large language models. Letian “Vincent” Liang. School of Future Technology. South China University of Technology. Data Science and Big Data Technology.";
+  "I am an undergraduate student at South China University of Technology, majoring in Data Science and Big Data Technology. I am fortunate to work under the supervision of Prof. Xiaowei Hu. I'm interested in artificial intelligence, especially agentic AI, recursive self-improvement, and multimodal large language models. Letian “Vincent” Liang. SCUT. Email. GitHub.";
 
 type SearchItem = {
   id: string;
@@ -143,7 +143,7 @@ const searchItems: SearchItem[] = [
     .filter((item) => !item.hidden)
     .map((item, index) => ({
       id: `about-education-${index}`,
-      section: "About / Academic background",
+      section: "About / Education",
       label: item.title,
       description: item.subtitle,
       href: "/about#education",
@@ -153,9 +153,8 @@ const searchItems: SearchItem[] = [
         item.subtitle,
         item.period,
         item.location,
-        item.description,
       ].join(" "),
-      snippetSource: `${item.subtitle}. ${item.description}`,
+      snippetSource: item.subtitle,
     })),
 ];
 

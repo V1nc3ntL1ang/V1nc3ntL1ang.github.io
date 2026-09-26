@@ -26,7 +26,6 @@ type EducationEntry = {
   subtitle: string;
   period: string;
   location: string;
-  description: string;
   href: string;
   media: {
     src: string;
@@ -59,19 +58,19 @@ export const focusAreas: FocusArea[] = [
     eyebrow: "01",
     title: "Agentic AI",
     description:
-      "I am interested in agentic AI systems where large language models plan, act, receive feedback, and iterate through interactions with environments to solve complex tasks beyond static prediction.",
+      "I am interested in agentic AI systems where large language models plan, act, and learn from feedback through repeated interactions with the environment to solve complex tasks that go beyond static prediction.",
   },
   {
     eyebrow: "02",
-    title: "Recursive Self-Improvement",
+    title: "RSI",
     description:
-      "I care about recursive self-improvement (RSI), where agents generate feedback from their own interactions, evaluate the outcomes of their actions, and use these signals to iteratively refine their reasoning, behavior, and capabilities over time.",
+      "I am interested in recursive self-improvement (RSI), where agents generate feedback from their own interactions, evaluate the outcomes of their actions, and use these signals to iteratively refine their reasoning, behavior, and capabilities over time.",
   },
   {
     eyebrow: "03",
-    title: "Multimodal Large Language Models",
+    title: "MLLM",
     description:
-      "I am interested in multimodal large language models (MLLMs) that can integrate information and reason effectively and reliably across text, vision, and audio.",
+      "I am interested in multimodal large language models (MLLMs) that learn to perceive, understand, and reason across text, vision, and audio, bringing perception and reasoning together within a unified model.",
   },
 ];
 
@@ -81,8 +80,6 @@ export const education: EducationEntry[] = [
     subtitle: "High school",
     period: "2020-2023",
     location: "Shenzhen, China",
-    description:
-      "Met a bunch of brilliant people and had a genuinely memorable time there. It was a period I still look back on very fondly.",
     href: "https://www.shenzhong.net/",
     media: {
       src: "/education/cards/sms-campus-main.webp",
@@ -97,8 +94,6 @@ export const education: EducationEntry[] = [
     subtitle: "B.Eng. candidate in Data Science and Big Data Technology",
     period: "2023-Present",
     location: "Guangzhou, China",
-    description:
-      "My current academic base, where I am laying my academic foundation and shaping the direction I hope to pursue over time.",
     href: "https://www.scut.edu.cn/en/",
     media: {
       src: "/education/cards/scut-campus-main.webp",
@@ -113,8 +108,6 @@ export const education: EducationEntry[] = [
     subtitle: "Berkeley Global Access Program",
     period: "Spring 2025",
     location: "Berkeley, CA",
-    description:
-      "Completed CS168 (Introduction to the Internet), CS186 (Introduction to Database Systems), and CS188 (Introduction to Artificial Intelligence) during the program.",
     href: "https://www.berkeley.edu/",
     media: {
       src: "/education/cards/berkeley-campus.webp",

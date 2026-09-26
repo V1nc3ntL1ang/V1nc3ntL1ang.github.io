@@ -1,46 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ChevronDownIcon, CloseIcon, SearchIcon } from "@/components/ui-icons";
 import {
   sortOptions,
   type SortValue,
 } from "@/lib/publication-view";
-
-function SortChevron() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 20 20"
-      fill="none"
-      className="size-4 transition-transform duration-200 group-hover/sort:rotate-180 group-focus-within/sort:rotate-180"
-    >
-      <path
-        d="m5 7.5 5 5 5-5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="size-4 shrink-0">
-      <circle cx="8.75" cy="8.75" r="5.25" stroke="currentColor" strokeWidth="1.5" />
-      <path d="m12.75 12.75 3.75 3.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ClearSearchIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" className="size-3.5">
-      <path d="m4.5 4.5 7 7m0-7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 export function PublicationToolbar({
   searchQuery,
@@ -108,7 +73,7 @@ export function PublicationToolbar({
   };
 
   return (
-    <div aria-label="Publication tools" className="flex flex-wrap items-center justify-end gap-3 text-sm">
+    <div aria-label="Publication tools" className="flex flex-wrap items-center justify-end gap-3 text-ui">
       <div
         ref={sortRootRef}
         className="group/sort relative"
@@ -155,7 +120,7 @@ export function PublicationToolbar({
           className="inline-flex h-9 items-center gap-2 px-2 text-foreground transition-colors hover:text-foreground-60 focus-visible:text-foreground-60 focus-visible:outline-none"
         >
           <span>Sort</span>
-          <SortChevron />
+          <ChevronDownIcon size={18} className="transition-transform duration-200 group-hover/sort:rotate-180 group-focus-within/sort:rotate-180" />
         </button>
         <div
           id="publication-sort-options"
@@ -185,7 +150,7 @@ export function PublicationToolbar({
             {sortOptions.map((option, index) => (
               <label
                 key={option.value}
-                className="group/option flex w-full cursor-pointer items-center gap-3 py-1.5 text-left text-base text-foreground-80 transition-colors hover:text-foreground"
+                className="group/option flex w-full cursor-pointer items-center gap-3 py-1.5 text-left text-ui text-foreground-80 transition-colors hover:text-foreground"
               >
                 <input
                   type="radio"
@@ -204,7 +169,7 @@ export function PublicationToolbar({
       </div>
 
       <div className="inline-flex h-9 w-full items-center gap-2 rounded-md border border-border-subtle px-3 text-foreground-44 transition-colors focus-within:border-border-strong focus-within:text-foreground-60 sm:w-56">
-        <SearchIcon />
+        <SearchIcon size={18} />
         <label htmlFor="publication-search" className="sr-only">
           Search publications
         </label>
@@ -224,7 +189,7 @@ export function PublicationToolbar({
             onClick={() => onSearchChange("")}
             className="flex size-5 shrink-0 items-center justify-center rounded-full text-foreground-44 transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
           >
-            <ClearSearchIcon />
+            <CloseIcon size={18} />
           </button>
         ) : null}
       </div>

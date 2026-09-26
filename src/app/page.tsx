@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@/components/ui-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { RevealGroup } from "@/components/reveal";
@@ -10,65 +11,22 @@ export default function Home() {
         <RevealGroup
           mode="load"
           as="div"
-          className="home-hero-grid mx-auto grid w-full max-w-[77rem] gap-12 md:grid-cols-[minmax(0,0.98fr)_minmax(18rem,0.62fr)] md:items-center md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.62fr)] lg:gap-14"
+          className="home-hero-grid grid w-full gap-12 md:items-center"
         >
           <div className="max-w-[44rem]">
-            <p
-              className="reveal-group-item eyebrow"
-              style={{ animationDelay: "20ms" }}
-            >
-              Welcome
-            </p>
-
             <h1
-              className="reveal-group-item home-hero-title mt-5 max-w-[14ch] text-[clamp(3rem,7.8vw,5.9rem)] leading-[0.93] tracking-[-0.048em] font-medium text-foreground"
+              className="reveal-group-item home-hero-title mt-5 leading-[0.93] tracking-[-0.048em] font-medium text-foreground"
               style={{ animationDelay: "90ms" }}
             >
-              Hi, I&apos;m {profile.nickname}. Welcome to my website.
+              <span className="home-hero-title-phrase">Hi, I&apos;m {profile.nickname}.</span>{" "}
+              <span className="home-hero-title-phrase home-hero-welcome">Welcome to my website.</span>
             </h1>
 
             <div
-              className="reveal-group-item home-hero-copy mt-10 max-w-[43rem] space-y-4 text-[1.0625rem] leading-8 tracking-[-0.01em] text-foreground-70 md:mt-12 md:text-[1.18rem] md:leading-9"
+              className="reveal-group-item home-hero-copy mt-10 space-y-4 tracking-[-0.01em] text-foreground-70 md:mt-12"
               style={{ animationDelay: "180ms" }}
             >
               <p>I love working with AI — and working on it.</p>
-              <p>
-                I like building things with strong ideas and clean execution.
-              </p>
-              <p>
-                I&apos;m drawn to work that feels thoughtful, clear, and quietly
-                confident.
-              </p>
-              <p>
-                You can reach me by{" "}
-                <a
-                  className="entity-inline-link"
-                  href={`mailto:${profile.email}`}
-                >
-                  email
-                  <span
-                    aria-hidden="true"
-                    className="link-arrow text-[0.85em] leading-none"
-                  >
-                    ↗
-                  </span>
-                </a>. If you&apos;re interested, feel free to take a look at my{" "}
-                <a
-                  className="entity-inline-link"
-                  href={profile.github}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                  <span
-                    aria-hidden="true"
-                    className="link-arrow text-[0.85em] leading-none"
-                  >
-                    ↗
-                  </span>
-                </a>
-                .
-              </p>
             </div>
 
             <div
@@ -78,7 +36,7 @@ export default function Home() {
               <Link href="/about" className="home-learn-link">
                 <span>Learn more about me</span>
                 <span className="home-learn-link-arrow" aria-hidden="true">
-                  →
+                  <ArrowRightIcon />
                 </span>
               </Link>
             </div>
@@ -88,7 +46,7 @@ export default function Home() {
             className="reveal-group-item md:justify-self-end"
             style={{ animationDelay: "300ms" }}
           >
-            <div className="relative md:translate-x-2 md:-translate-y-2 lg:translate-x-4 lg:-translate-y-4">
+            <div className="relative md:-translate-y-2 lg:-translate-y-4">
               <div className="pointer-events-none absolute inset-6 rounded-[2.2rem] bg-[radial-gradient(circle,rgba(255,255,255,0.07),transparent_70%)] blur-3xl opacity-60" />
               <Image
                 src="/home/vincent-dog-avatar.png"

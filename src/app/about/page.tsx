@@ -1,34 +1,12 @@
+import { ArrowUpRightIcon } from "@/components/ui-icons";
 import Image from "next/image";
-import { GitHubIcon, MailIcon } from "@/components/contact-icons";
+import { AboutIntro } from "@/components/about-intro";
 import { OpenEndedCurvedRunner } from "@/components/open-ended-curved-runner";
 import { Reveal, RevealGroup } from "@/components/reveal";
-import { education, focusAreas, profile } from "@/lib/site-content";
+import { education, focusAreas } from "@/lib/site-content";
 
 const visibleFocusAreas = focusAreas.filter((item) => !item.hidden);
 const visibleEducation = education.filter((item) => !item.hidden);
-const aboutHeroCopy = (
-  <>
-    I study Data Science and Big Data Technology at South China University of
-    Technology, where I am fortunate to work under the supervision of{" "}
-    <a
-      className="entity-inline-link"
-      href="https://xw-hu.github.io/"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Prof. Xiaowei Hu
-      <span
-        aria-hidden="true"
-        className="link-arrow text-[0.85em] leading-none"
-      >
-        {"\u2197"}
-      </span>
-    </a>
-    . I&apos;m interested in artificial intelligence, especially agentic AI,
-    recursive self-improvement, and multimodal large language models.
-  </>
-);
-
 type InterestVisualStyle = "ambient" | "quiet" | "etched";
 type VisibleFocusArea = (typeof visibleFocusAreas)[number];
 
@@ -109,20 +87,13 @@ function InterestVisual({
   );
 }
 
-function InterestCopy({
-  item,
-  index,
-  compact = false,
-}: {
-  item: VisibleFocusArea;
-  index: number;
-  compact?: boolean;
-}) {
+function InterestCopy({ item }: { item: VisibleFocusArea }) {
   return (
-    <div className={`interest-copy${compact ? " interest-copy-compact" : ""}`}>
-      <p className="interest-index">{String(index + 1).padStart(2, "0")}</p>
+    <div className="interest-copy">
       <h3 className="interest-title">{item.title}</h3>
-      <p className="interest-description">{item.description}</p>
+      <p className="interest-description">
+        {item.description.replace(/ (\S+)$/, "\u00a0$1")}
+      </p>
     </div>
   );
 }
@@ -130,136 +101,20 @@ function InterestCopy({
 export default function AboutPage() {
   return (
     <div>
-      <section
-        id="overview"
-        className="site-shell flex min-h-[calc(100svh-var(--header-h))] items-center py-12 md:py-16"
-      >
-        <RevealGroup
-          mode="load"
-          as="div"
-          className="grid w-full gap-10 md:grid-cols-[1.25fr_0.75fr] md:items-center"
-        >
-          <div
-            className="reveal-group-item max-w-4xl"
-            style={{ animationDelay: "40ms" }}
-          >
-            <p className="eyebrow">Overview</p>
-            <h1 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
-              Undergraduate at SCUT, majoring in Data Science and Big Data
-              Technology
-            </h1>
-            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
-              {aboutHeroCopy}
-            </p>
-          </div>
-
-          <aside
-            className="reveal-group-item card-surface rounded-[2rem] p-6 md:p-8"
-            style={{ animationDelay: "180ms" }}
-          >
-            <p className="eyebrow">Facts & Contact</p>
-            <div className="mt-6 divide-y divide-border-subtle">
-              <div className="py-4 first:pt-0">
-                <p className="text-xs uppercase tracking-[0.16em] text-foreground-44">
-                  Name
-                </p>
-                <p className="mt-2 text-[1.05rem] font-medium leading-7 text-foreground">
-                  {profile.displayName}
-                </p>
-              </div>
-              <div className="py-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-foreground-44">
-                  Affiliation
-                </p>
-                <div className="mt-2 grid gap-1 text-[1.05rem] font-medium leading-7 text-foreground">
-                  <a
-                    className="entity-subtle-link w-fit"
-                    href="https://www2.scut.edu.cn/ft_en/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    School of Future Technology
-                    <span
-                      aria-hidden="true"
-                      className="link-arrow text-sm leading-none"
-                    >
-                      ↗
-                    </span>
-                  </a>
-                  <a
-                    className="entity-subtle-link w-fit"
-                    href="https://www.scut.edu.cn/en/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    South China University of Technology (SCUT)
-                    <span
-                      aria-hidden="true"
-                      className="link-arrow text-sm leading-none"
-                    >
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className="py-4 last:pb-0">
-                <p className="text-xs uppercase tracking-[0.16em] text-foreground-44">
-                  Email & GitHub
-                </p>
-                <div className="mt-2 grid gap-1 text-[1.05rem] font-medium leading-7 text-foreground">
-                  <a
-                    className="entity-subtle-link flex w-fit max-w-full items-center gap-5"
-                    href={`mailto:${profile.email}`}
-                  >
-                    <MailIcon className="shrink-0 text-foreground-44" />
-                    <span className="min-w-0 break-all">{profile.email}</span>
-                    <span
-                      aria-hidden="true"
-                      className="link-arrow shrink-0 text-sm leading-none"
-                    >
-                      ↗
-                    </span>
-                  </a>
-                  <a
-                    className="entity-subtle-link flex w-fit max-w-full items-center gap-5"
-                    href={profile.github}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <GitHubIcon className="shrink-0 text-foreground-44" />
-                    <span className="min-w-0 break-all">
-                      github.com/V1nc3ntL1ang
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="link-arrow shrink-0 text-sm leading-none"
-                    >
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </RevealGroup>
-      </section>
+      <AboutIntro />
 
       <section
         id="research"
-        className="site-shell flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[3.5rem] md:py-[5rem]"
+        className="site-shell about-section flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[3.5rem] md:py-[5rem]"
       >
         <RevealGroup as="div">
           <div
-            className="reveal-group-item mb-10 max-w-3xl"
+            className="reveal-group-item about-section-heading mb-10 max-w-3xl"
             style={{ animationDelay: "40ms" }}
           >
-            <p className="eyebrow">Research interests</p>
-            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
-              Current interests
+            <h2 className="about-section-title max-w-[16ch] text-section leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
+              Research interests
             </h2>
-            <p className="mt-5 max-w-[40rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
-              The areas that currently hold most of my academic attention.
-            </p>
           </div>
           <div className="interest-card-grid interest-card-grid-art">
             {visibleFocusAreas.map((item, index) => (
@@ -269,7 +124,7 @@ export default function AboutPage() {
                 style={{ animationDelay: `${140 + index * 90}ms` }}
               >
                 <InterestVisual index={index} style="ambient" />
-                <InterestCopy item={item} index={index} />
+                <InterestCopy item={item} />
               </article>
             ))}
           </div>
@@ -278,17 +133,13 @@ export default function AboutPage() {
 
       <section
         id="education"
-        className="site-shell flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[2.5rem] md:py-[3.5rem]"
+        className="site-shell about-section education-section flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[2.5rem] md:py-[3.5rem]"
       >
         <div>
-          <Reveal className="mb-8 max-w-3xl" mode="in-view">
-            <p className="eyebrow">Education</p>
-            <h2 className="mt-4 max-w-[16ch] text-[clamp(2.15rem,4.8vw,3.45rem)] leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
-              Academic background
+          <Reveal className="about-section-heading mb-8 max-w-3xl" mode="in-view">
+            <h2 className="about-section-title max-w-[16ch] text-section leading-[0.98] tracking-[-0.038em] font-medium text-foreground">
+              Education
             </h2>
-            <p className="mt-5 max-w-[42rem] text-[17px] leading-8 tracking-[-0.008em] text-foreground-70 md:text-lg md:leading-8">
-              Academic environments that shaped how I perceive, think, and act.
-            </p>
           </Reveal>
           <RevealGroup
             as="div"
@@ -297,21 +148,21 @@ export default function AboutPage() {
             {visibleEducation.map((item, index) => (
               <article
                 key={`education-${item.title}`}
-                className="grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
+                className="education-row grid gap-4 py-5 md:grid-cols-[minmax(0,1fr)_15rem] md:items-center md:gap-6 md:py-5"
               >
                 <div
-                  className="reveal-group-item grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
+                  className="reveal-group-item education-details grid gap-4 md:grid-cols-[9.5rem_minmax(0,1fr)] md:items-center md:gap-6"
                   style={{ animationDelay: `${120 + index * 110}ms` }}
                 >
                   <div className="md:pt-1">
                     <p className="education-period">{item.period}</p>
-                    <p className="mt-3 text-[17px] leading-7 text-foreground">
+                    <p className="mt-3 text-ui leading-7 text-foreground">
                       {item.location}
                     </p>
                   </div>
 
-                  <div className="max-w-3xl md:pt-0.5">
-                    <h3 className="text-[1.65rem] font-medium tracking-[-0.03em] text-foreground">
+                  <div className="education-copy max-w-3xl md:pt-0.5">
+                    <h3 className="text-title font-medium tracking-[-0.03em] text-foreground">
                       <a
                         className="entity-title-link"
                         href={item.href}
@@ -323,15 +174,12 @@ export default function AboutPage() {
                           aria-hidden="true"
                           className="link-arrow text-[0.85em] leading-none"
                         >
-                          ↗
+                          <ArrowUpRightIcon />
                         </span>
                       </a>
                     </h3>
-                    <p className="mt-2 text-[17px] leading-7 text-foreground-70">
+                    <p className="mt-2 text-body leading-7 text-foreground-70">
                       {item.subtitle}
-                    </p>
-                    <p className="mt-3 max-w-3xl text-[17px] leading-7 tracking-[-0.008em] text-foreground-60">
-                      {item.description}
                     </p>
                   </div>
                 </div>
@@ -340,7 +188,7 @@ export default function AboutPage() {
                   className="reveal-group-item reveal-group-item-lite md:justify-self-end"
                   style={{ animationDelay: `${180 + index * 110}ms` }}
                 >
-                  <div className="relative aspect-[1.14/0.88] w-full overflow-hidden rounded-[1.45rem] bg-background-soft md:w-[15rem]">
+                  <div className="education-image relative aspect-[1.14/0.88] w-full overflow-hidden rounded-[1.45rem] bg-background-soft md:w-[15rem]">
                     <Image
                       src={item.media.src}
                       alt={item.media.alt}

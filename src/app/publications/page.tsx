@@ -103,33 +103,21 @@ export default function PublicationsPage() {
             className="reveal-group-item reveal-group-item-lite mb-10 rounded-xl border border-[#e7c45a]/70 bg-[#e7c45a]/10 px-4 py-4 text-[#f0d77b] md:mb-12 md:px-5"
             style={{ animationDelay: "30ms" }}
           >
-            <p className="text-lg leading-7 font-semibold text-[#f6dc7d]">
+            <p className="text-body leading-7 font-semibold text-[#f6dc7d]">
               Note:
             </p>
-            <p className="mt-1 text-base leading-7 text-[#f0d77b]">
+            <p className="mt-1 text-body leading-7 text-[#f0d77b]">
               Impressive detective work—you found this page before it was
               ready! It’s mostly placeholders for now, but I really hope to
               fill it with my own work over time.
             </p>
           </div>
-          <p
-            className="reveal-group-item reveal-group-item-lite eyebrow"
-            style={{ animationDelay: "90ms" }}
-          >
-            Publications
-          </p>
           <h1
-            className="reveal-group-item reveal-group-item-lite mt-4 text-[clamp(2.5rem,5vw,3rem)] leading-none font-medium tracking-[-0.04em] text-foreground"
+            className="reveal-group-item reveal-group-item-lite text-section leading-none font-medium tracking-[-0.04em] text-foreground"
             style={{ animationDelay: "150ms" }}
           >
-            Papers, Preprints, and Selected Research
+            Publications
           </h1>
-          <p
-            className="reveal-group-item reveal-group-item-lite mt-5 text-base leading-7 tracking-[-0.01em] text-foreground-44"
-            style={{ animationDelay: "210ms" }}
-          >
-            A collection of my academic work.
-          </p>
         </RevealGroup>
       </section>
 
@@ -170,7 +158,7 @@ export default function PublicationsPage() {
             ) : (
               <RevealGroup>
                 <div className="reveal-group-item reveal-group-item-card card-surface rounded-[1.5rem] px-6 py-16 text-center md:px-8">
-                  <p className="text-base text-foreground-60">
+                  <p className="text-ui text-foreground-60">
                     {normalizedQuery && selectedFilterCount > 0
                       ? "No publications match the current search and filters."
                       : normalizedQuery

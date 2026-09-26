@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SearchIcon } from "@/components/ui-icons";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
@@ -14,26 +15,6 @@ import {
   SiteSearchPanel,
 } from "@/components/site-nav/site-nav-panels";
 import { navItems } from "@/lib/site-content";
-
-function SearchIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      viewBox="0 0 16 16"
-      fill="none"
-    >
-      <path
-        d="M13.8333 13.8333L10.7022 10.7022M10.7022 10.7022C11.607 9.79738 12.1667 8.54738 12.1667 7.16667C12.1667 4.40525 9.9281 2.16667 7.16667 2.16667C4.40525 2.16667 2.16667 4.40525 2.16667 7.16667C2.16667 9.9281 4.40525 12.1667 7.16667 12.1667C8.54738 12.1667 9.79738 11.607 10.7022 10.7022Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function menuKeyForHref(href: string): MenuKey {
   if (href === "/about") return "about";
@@ -200,14 +181,6 @@ export function SiteNav() {
 
   useEffect(() => {
     if (!searchOpen) return;
-    const frame = window.requestAnimationFrame(() => {
-      searchInputRef.current?.focus();
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [searchOpen]);
-
-  useEffect(() => {
-    if (!searchOpen) return;
 
     const preventBackgroundScroll = (event: WheelEvent | TouchEvent) => {
       const target = event.target;
@@ -312,7 +285,7 @@ export function SiteNav() {
                 aria-label={searchOpen ? "Close search" : "Open search"}
                 aria-expanded={searchOpen}
                 aria-controls="site-search-panel"
-                className="nav-icon-button"
+                className="nav-icon-button nav-search-trigger"
                 onMouseEnter={closeMenu}
                 onFocus={closeMenu}
                 onClick={toggleSearch}
@@ -358,7 +331,7 @@ export function SiteNav() {
                 aria-label={searchOpen ? "Close search" : "Open search"}
                 aria-expanded={searchOpen}
                 aria-controls="site-search-panel"
-                className="nav-icon-button"
+                className="nav-icon-button nav-search-trigger"
                 onClick={toggleSearch}
               >
                 <SearchIcon />

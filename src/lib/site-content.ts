@@ -58,19 +58,19 @@ export const focusAreas: FocusArea[] = [
     eyebrow: "01",
     title: "Agentic AI",
     description:
-      "I am interested in agentic AI systems where large language models plan, act, and learn from feedback through repeated interactions with the environment to solve complex tasks that go beyond static prediction.",
+      "I am interested in agentic AI systems where large language models plan, act, receive feedback, and iterate through interactions with the environment to solve complex tasks beyond static prediction.",
   },
   {
     eyebrow: "02",
     title: "RSI",
     description:
-      "I am interested in recursive self-improvement (RSI), where agents generate feedback from their own interactions, evaluate the outcomes of their actions, and use these signals to iteratively refine their reasoning, behavior, and capabilities over time.",
+      "I am interested in recursive self-improvement (RSI), where models generate feedback from their own interactions, evaluate the outcomes of their actions, and use these signals to iteratively refine their reasoning, behavior, and capabilities over time.",
   },
   {
     eyebrow: "03",
     title: "MLLM",
     description:
-      "I am interested in multimodal large language models (MLLMs) that learn to perceive, understand, and reason across text, vision, and audio, bringing perception and reasoning together within a unified model.",
+      "I am interested in multimodal large language models (MLLMs) that can integrate information and reason effectively and reliably across text, vision, and audio.",
   },
 ];
 
